@@ -1,0 +1,24 @@
+﻿<?Mapping ClrNamespace="DataContextSample" XmlNamespace="local"?>
+<Window x:Class="DataContextSample.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+	xmlns:local="local" 
+    Text="DataContextSample"
+	SizeToContent="WidthAndHeight"
+	>
+
+	<Window.Resources>
+		<local:GreekGod Name="Zeus" Description="Supreme God of the Olympians" RomanName="Jupiter" x:Key="zeus"/>
+		<local:GreekGod Name="Poseidon" Description="God of the sea, earthquakes and horses" RomanName="Neptune" x:Key="poseidon"/>
+	</Window.Resources>
+
+	<StackPanel>
+		<Border BorderBrush="RoyalBlue" BorderThickness="2" Margin="25" Padding="5">
+			<StackPanel DataContext="{StaticResource poseidon}">
+				<TextBlock TextContent="{Binding Source={StaticResource zeus}, Path=Name}"/>
+				<TextBlock TextContent="{Binding Path=Description}"/>
+				<TextBlock TextContent="{Binding Path=RomanName}"/>
+			</StackPanel>
+		</Border>
+	</StackPanel>
+</Window>
