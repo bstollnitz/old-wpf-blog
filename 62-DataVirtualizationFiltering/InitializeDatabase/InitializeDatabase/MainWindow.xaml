@@ -1,0 +1,27 @@
+﻿<Window x:Class="InitializeDatabase.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Database Initializer" SizeToContent="Height" Width="500">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,5,0,5" />
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,5,0,5" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Height" Value="100" />
+        </Style>
+    </Window.Resources>
+    <Grid Margin="30,25,30,25">
+        <StackPanel>
+            <Button Content="Initialize Database" Click="InitializeDatabase_Click" x:Name="InitializeDatabaseButton"/>
+            <Button Content="Clean up files" Click="CleanUp_Click" x:Name="CleanUpButton"/>
+            <TextBlock x:Name="Status" />
+        </StackPanel>
+    </Grid>
+</Window>
