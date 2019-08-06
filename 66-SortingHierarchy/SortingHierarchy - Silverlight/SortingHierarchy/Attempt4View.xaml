@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="SortingHierarchy.Attempt4View"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:scm="clr-namespace:System.ComponentModel;assembly=System.Windows" 
+    xmlns:sdk="clr-namespace:System.Windows;assembly=System.Windows.Controls"
+	xmlns:sdkControls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+	xmlns:local="clr-namespace:SortingHierarchy"
+	xmlns:theming="clr-namespace:System.Windows.Controls.Theming;assembly=System.Windows.Controls.Theming.Toolkit"
+	>
+	<UserControl.Resources>
+		<local:SortCountiesConverter1 x:Key="SortCountiesConverter" />
+		<local:SortCitiesConverter1 x:Key="SortCitiesConverter" />
+
+		<CollectionViewSource x:Key="CvsStates">
+			<CollectionViewSource.SortDescriptions>
+				<scm:SortDescription PropertyName="StateName" />
+			</CollectionViewSource.SortDescriptions>
+		</CollectionViewSource>
+
+		<DataTemplate x:Key="CityTemplate">
+			<TextBlock Text="{Binding CityName}" />
+		</DataTemplate>
+
+		<sdk:HierarchicalDataTemplate x:Key="CountyTemplate" ItemsSource="{Binding Cities, Converter={StaticResource SortCitiesConverter}}" ItemTemplate="{StaticResource CityTemplate}">
+			<TextBlock Text="{Binding CountyName}" />
+		</sdk:HierarchicalDataTemplate>
+
+		<sdk:HierarchicalDataTemplate x:Key="StateTemplate" ItemsSource="{Binding Counties, Converter={StaticResource SortCountiesConverter}}" ItemTemplate="{StaticResource CountyTemplate}">
+			<TextBlock Text="{Binding StateName}" />
+		</sdk:HierarchicalDataTemplate>
+
+	</UserControl.Resources>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<sdkControls:TreeView ItemsSource="{Binding Source={StaticResource CvsStates}}" ItemTemplate="{StaticResource StateTemplate}" theming:ImplicitStyleManager.ApplyMode="Auto" x:Name="tv"/>
+		<Button Grid.Row="1" Click="AddItem_Click" Margin="10" HorizontalAlignment="Center" Content="Add item"/>
+	</Grid>
+</UserControl>

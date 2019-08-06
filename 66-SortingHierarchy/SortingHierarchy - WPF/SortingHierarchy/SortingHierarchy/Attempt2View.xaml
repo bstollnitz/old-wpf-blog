@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="SortingHierarchy.Attempt2View"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase" 
+	xmlns:local="clr-namespace:SortingHierarchy"
+	>
+	<UserControl.Resources>
+
+		<CollectionViewSource Source="{Binding States}" x:Key="CvsStates">
+			<CollectionViewSource.SortDescriptions>
+				<scm:SortDescription PropertyName="StateName" />
+			</CollectionViewSource.SortDescriptions>
+		</CollectionViewSource>
+
+		<DataTemplate x:Key="CityTemplate">
+			<TextBlock Text="{Binding CityName}" />
+		</DataTemplate>
+
+		<HierarchicalDataTemplate x:Key="CountyTemplate" DataType="{x:Type local:County}" ItemTemplate="{StaticResource CityTemplate}">
+			<HierarchicalDataTemplate.Resources>
+				<CollectionViewSource Source="{Binding Path=Cities}" x:Key="CvsCities">
+					<CollectionViewSource.SortDescriptions>
+						<scm:SortDescription PropertyName="CityName"/>
+					</CollectionViewSource.SortDescriptions>
+				</CollectionViewSource>
+			</HierarchicalDataTemplate.Resources>
+			<HierarchicalDataTemplate.ItemsSource>
+				<Binding Source="{StaticResource CvsCities}" />
+			</HierarchicalDataTemplate.ItemsSource>
+			
+			<TextBlock Text="{Binding CountyName}" />
+		</HierarchicalDataTemplate>
+
+		<HierarchicalDataTemplate x:Key="StateTemplate" DataType="{x:Type local:State}" ItemTemplate="{StaticResource CountyTemplate}">
+			<HierarchicalDataTemplate.Resources>
+				<CollectionViewSource Source="{Binding Path=Counties}" x:Key="CvsCounties">
+					<CollectionViewSource.SortDescriptions>
+						<scm:SortDescription PropertyName="CountyName" />
+					</CollectionViewSource.SortDescriptions>
+				</CollectionViewSource>
+			</HierarchicalDataTemplate.Resources>
+			<HierarchicalDataTemplate.ItemsSource>
+				<Binding Source="{StaticResource CvsCounties}" />
+			</HierarchicalDataTemplate.ItemsSource>
+			
+			<TextBlock Text="{Binding StateName}" />
+		</HierarchicalDataTemplate>
+
+	</UserControl.Resources>
+	
+	<TreeView ItemsSource="{Binding Source={StaticResource CvsStates}}" ItemTemplate="{StaticResource StateTemplate}" />
+</UserControl>

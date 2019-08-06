@@ -1,0 +1,36 @@
+﻿<Window x:Class="SortingHierarchy.Window1"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:SortingHierarchy"
+	Width="500" Height="900"
+	Title="Sorting hierarchy">
+	<Window.Resources>
+		<Style TargetType="TreeViewItem">
+			<Setter Property="IsExpanded" Value="True"/>
+		</Style>
+	</Window.Resources>
+
+	<Grid Margin="30">
+		<TabControl>
+			<TabItem Header="Attempt 1">
+				<local:Attempt1View />
+			</TabItem>
+			
+			<TabItem Header="Attempt 2">
+				<local:Attempt2View />
+			</TabItem>
+			
+			<TabItem Header="Attempt 3">
+				<local:Attempt3View />
+			</TabItem>
+
+			<TabItem Header="Attempt 4">
+				<local:Attempt4View />
+			</TabItem>
+
+			<TabItem Header="Solution" IsSelected="True">
+				<local:SolutionView />
+			</TabItem>
+		</TabControl>
+	</Grid>
+</Window>
