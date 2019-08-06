@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="ExpandTreeViewSilverlight.Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:local="clr-namespace:ExpandTreeViewSilverlight"
+    xmlns:controls="clr-namespace:Microsoft.Windows.Controls;assembly=Microsoft.Windows.Controls"
+    xmlns:theming="clr-namespace:Microsoft.Windows.Controls.Theming;assembly=Microsoft.Windows.Controls.Theming"
+    >
+    <UserControl.Resources>
+        <controls:ObjectCollection x:Key="treeOfLife">
+            <local:Domain Classification="Bacteria">
+                <local:Kingdom Classification="Eubacteria" />
+            </local:Domain>
+            <local:Domain Classification="Archaea">
+                <local:Kingdom Classification="Archaebacteria" />
+            </local:Domain>
+            <local:Domain Classification="Eukarya">
+                <local:Kingdom Classification="Protista" />
+                <local:Kingdom Classification="Fungi" />
+                <local:Kingdom Classification="Plantae" />
+                <local:Kingdom Classification="Animalia">
+                    <local:Phylum Classification="Arthropoda">
+                        <local:Class Classification="Insecta">
+                            <local:Order Classification="Diptera">
+                                <local:Family Classification="Drosophilidae">
+                                    <local:Genus Classification="Drosophila">
+                                        <local:Species Classification="D. melanogaster" />
+                                    </local:Genus>
+                                </local:Family>
+                            </local:Order>
+                        </local:Class>
+                    </local:Phylum>
+                    <local:Phylum Classification="Chordata">
+                        <local:Class Classification="Mammalia">
+                            <local:Order Classification="Primates">
+                                <local:Family Classification="Hominidae">
+                                    <local:Genus Classification="Homo">
+                                        <local:Species Classification="H. sapiens" />
+                                    </local:Genus>
+                                </local:Family>
+                            </local:Order>
+                        </local:Class>
+                    </local:Phylum>
+                    <local:Phylum Classification="Ctenophora" />
+                    <local:Phylum Classification="Porifera" />
+                    <local:Phylum Classification="Placozoa" />
+                </local:Kingdom>
+            </local:Domain>
+        </controls:ObjectCollection>
+
+        <controls:HierarchicalDataTemplate ItemsSource="{Binding Subclasses}" x:Key="treeOfLifeTemplate">
+            <TextBlock Text="{Binding Path=Classification}" />
+        </controls:HierarchicalDataTemplate>
+
+        <Style TargetType="controls:TreeViewItem">
+            <Setter Property="IsExpanded" Value="True" />
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid Background="#333333">
+        <controls:TreeView ItemsSource="{StaticResource treeOfLife}" ItemTemplate="{StaticResource treeOfLifeTemplate}" theming:ImplicitStyleManager.ApplyMode="Auto" Background="LightGray" Height="545" Width="300"/>
+    </Grid>
+</UserControl>
