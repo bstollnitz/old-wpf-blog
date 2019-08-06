@@ -1,0 +1,32 @@
+﻿<Window x:Class="DataBoundDialogBox.Dialog1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+    SizeToContent="WidthAndHeight"
+    Title="Enter comment"
+    ResizeMode="NoResize"
+    ShowInTaskbar="False"
+    WindowStartupLocation="CenterOwner"
+    FocusManager.FocusedElement="{Binding ElementName=Name}"
+    >
+
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="Name:" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="right"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Name="Name" Margin="5" Text="{Binding Source={StaticResource source}, Path=Name, UpdateSourceTrigger=Explicit}"/>
+        <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Comment:" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="right"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="Comment" Margin="5" Text="{Binding Source={StaticResource source}, Path=Comment, UpdateSourceTrigger=Explicit}"/>
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="right" Orientation="Horizontal">
+            <Button Click="OKHandler" IsDefault="true" Margin="5">OK</Button>
+            <Button IsCancel="true" Margin="5">Cancel</Button>
+        </StackPanel>
+    </Grid>
+
+</Window>

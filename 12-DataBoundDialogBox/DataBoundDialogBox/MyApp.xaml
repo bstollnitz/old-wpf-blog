@@ -1,0 +1,11 @@
+﻿<?Mapping XmlNamespace="local" ClrNamespace="DataBoundDialogBox"?>
+<Application x:Class="DataBoundDialogBox.MyApp"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+    xmlns:local="local" 
+    StartupUri="Window1.xaml"
+    >
+    <Application.Resources>
+        <local:DataSource x:Key="source" />
+    </Application.Resources>
+</Application>

@@ -1,0 +1,26 @@
+﻿<Window x:Class="DataBoundDialogBox.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+    Title="DataBoundDialogBox"
+    SizeToContent="WidthAndHeight"
+    >
+    <Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10" VerticalAlignment="Center" Width="300" Height="200">
+        <StackPanel VerticalAlignment="Center">
+            <Button Click="ShowDialog" Width="100" Height="30">Show Dialog</Button>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="Name:" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="right"/>
+                <Label Grid.Row="0" Grid.Column="1" Name="Name" Margin="5" Content="{Binding Source={StaticResource source}, Path=Name}"/>
+                <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Comment:" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="right"/>
+                <Label Grid.Row="1" Grid.Column="1" Name="Comment" Margin="5" Content="{Binding Source={StaticResource source}, Path=Comment}"/>
+            </Grid>
+        </StackPanel>
+    </Border>
+</Window>
