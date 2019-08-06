@@ -1,0 +1,98 @@
+﻿<Window x:Class="ChangePanelItemsControl.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+    Title="ChangePanelItemsControl"
+	SizeToContent="WidthAndHeight"
+    >
+	<Window.Resources>
+		<XmlDataProvider XPath="/GreekGods/GreekGod" x:Key="xmlData">
+			<GreekGods xmlns="">
+				<GreekGod>
+					<Name>Aphrodite</Name>
+					<Description>Goddess of love, beauty and fertility</Description>
+					<RomanName>Venus</RomanName>
+				</GreekGod>
+				<GreekGod>
+					<Name>Apollo</Name>
+					<Description>God of prophesy, music and healing</Description>
+					<RomanName>Apollo</RomanName>
+				</GreekGod>
+				<GreekGod Prop="Hello">
+					<Name>Ares</Name>
+					<Description>God of war</Description>
+					<RomanName>Mars</RomanName>
+				</GreekGod>
+				<GreekGod>
+					<Name>Artemis</Name>
+					<Description>Virgin goddess of the hunt</Description>
+					<RomanName>Diana</RomanName>
+				</GreekGod>
+				<GreekGod>
+					<Name>Athena</Name>
+					<Description>Goddess of crafts and the domestic arts</Description>
+					<RomanName>Athena</RomanName>
+				</GreekGod>
+				<GreekGod>
+					<Name>Demeter</Name>
+					<Description>Goddess of agriculture</Description>
+					<RomanName>Ceres</RomanName>
+				</GreekGod>
+				<GreekGod>
+					<Name>Dionysus</Name>
+					<Description>God of wine</Description>
+					<RomanName>Bacchus</RomanName>
+				</GreekGod>
+				<GreekGod>
+					<Name>Hephaestus</Name>
+					<Description>God of fire and crafts</Description>
+					<RomanName>Vulcan</RomanName>
+				</GreekGod>
+				<GreekGod>
+					<Name>Hera</Name>
+					<Description>Goddess of marriage</Description>
+					<RomanName>Juno</RomanName>
+				</GreekGod>
+				<GreekGod>
+					<Name>Hermes</Name>
+					<Description>Messenger of the Gods</Description>
+					<RomanName>Mercury</RomanName>
+				</GreekGod>
+				<GreekGod>
+					<Name>Poseidon</Name>
+					<Description>God of the sea, earthquakes and horses</Description>
+					<RomanName>Neptune</RomanName>
+				</GreekGod>
+				<GreekGod>
+					<Name>Zeus</Name>
+					<Description>Supreme God of the Olympians</Description>
+					<RomanName>Jupiter</RomanName>
+				</GreekGod>
+			</GreekGods>
+		</XmlDataProvider>
+
+		<DataTemplate x:Key="greekGodTemplate">
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="{Binding XPath=Name}"/>
+				<TextBlock Text=" " />
+			</StackPanel>
+		</DataTemplate>
+
+		<ControlTemplate x:Key="listBoxTemplate">
+			<Border BorderBrush="Orange" BorderThickness="2" Margin="10,0,10,10">
+				<StackPanel Orientation="Horizontal" IsItemsHost="True" />
+			</Border>
+		</ControlTemplate>
+	</Window.Resources>
+
+	<Border Margin="30" BorderBrush="Blue" BorderThickness="2">
+		<StackPanel>
+			<ListBox ItemsSource="{Binding Source={StaticResource xmlData}}" ItemTemplate="{StaticResource greekGodTemplate}" Margin="10">
+				<ListBox.ItemsPanel>
+					<StackPanel Orientation="Horizontal" />
+				</ListBox.ItemsPanel>
+			</ListBox>
+
+			<ListBox ItemsSource="{Binding Source={StaticResource xmlData}}" Template="{StaticResource listBoxTemplate}" ItemTemplate="{StaticResource greekGodTemplate}"/>
+		</StackPanel>
+	</Border>
+</Window>
