@@ -1,0 +1,40 @@
+﻿<?Mapping XmlNamespace="local" ClrNamespace="GroupByType"?>
+<Window x:Class="GroupByType.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+    Title="GroupByType"
+    xmlns:local="local"
+    SizeToContent="WidthAndHeight"
+    >
+	<Window.Resources>
+		<local:GreekGodsAndHeroes x:Key="GodsAndHeroes" />
+		<local:GroupByTypeConverter x:Key="GroupByTypeConverter"/>
+		<local:GodHeroTemplateSelector x:Key="GodHeroTemplateSelector" />
+		
+		<CollectionViewSource x:Key="cvs" Source="{Binding Source={StaticResource GodsAndHeroes}}">
+			<CollectionViewSource.GroupDescriptions>
+				<PropertyGroupDescription Converter="{StaticResource GroupByTypeConverter}"/>
+			</CollectionViewSource.GroupDescriptions>
+		</CollectionViewSource>
+
+		<HierarchicalDataTemplate x:Key="GroupTemplate" ItemsSource="{Binding Path=Items}">
+			<TextBlock Text="{Binding Path=Name}" FontWeight="Bold"/>
+		</HierarchicalDataTemplate>
+
+		<DataTemplate x:Key="GreekGodTemplate">
+			<TextBlock Text="{Binding Path=GodName}"/>
+		</DataTemplate>
+
+		<DataTemplate x:Key="GreekHeroTemplate">
+			<TextBlock Text="{Binding Path=HeroName}"/>
+		</DataTemplate>
+	</Window.Resources>
+
+	<Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10">
+		<TreeView ItemsSource="{Binding Source={StaticResource cvs}, Path=Groups}" 
+			ItemTemplateSelector="{StaticResource GodHeroTemplateSelector}"
+			Width="200">
+		</TreeView>
+	</Border>
+
+</Window>
