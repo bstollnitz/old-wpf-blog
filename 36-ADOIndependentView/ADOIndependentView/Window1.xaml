@@ -1,0 +1,56 @@
+﻿<Window x:Class="ADOIndependentView.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:data="clr-namespace:System.Data;assembly=System.Data"
+    Title="ADOIndependentView" Height="430" Width="300"
+    ResizeMode="NoResize"
+    >
+    <Window.Resources>
+        <CollectionViewSource Source="{StaticResource sacredRiversTable}" x:Key="cvs1"/>
+        <CollectionViewSource Source="{StaticResource sacredRiversTable}" x:Key="cvs2"/>
+
+        <ObjectDataProvider x:Key="independentView1" ObjectType="{x:Type data:DataView}">
+            <ObjectDataProvider.ConstructorParameters>
+                <StaticResource ResourceKey="sacredRiversTable" />
+            </ObjectDataProvider.ConstructorParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="independentView2" ObjectType="{x:Type data:DataView}">
+            <ObjectDataProvider.ConstructorParameters>
+                <StaticResource ResourceKey="sacredRiversTable" />
+            </ObjectDataProvider.ConstructorParameters>
+        </ObjectDataProvider>
+
+        <CollectionViewSource Source="{StaticResource independentView1}" x:Key="cvs3"/>
+        <CollectionViewSource Source="{StaticResource independentView2}" x:Key="cvs4"/>
+
+        <Style TargetType="TextBlock" x:Key="title">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Foreground" Value="LightBlue" />
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="Margin" Value="8" />
+        </Style>
+    </Window.Resources>
+    <Grid Margin="30">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Limitation" Grid.ColumnSpan="2" Style="{StaticResource title}"/>
+        <ListBox ItemsSource="{Binding Source={StaticResource cvs1}}" DisplayMemberPath="RiverName" Width="100" Grid.Row="1"/>
+        <ListBox ItemsSource="{Binding Source={StaticResource cvs2}}" DisplayMemberPath="RiverName" Width="100" Grid.Row="1" Grid.Column="1"/>
+        <Button Content="Sort first view descending" Click="SortCvs1DescendingHandler" Margin="8" Grid.Row="2" Grid.ColumnSpan="2"/>
+        <TextBlock Text="Workaround" Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource title}"/>
+        <ListBox ItemsSource="{Binding Source={StaticResource cvs3}}" DisplayMemberPath="RiverName" Width="100" Grid.Row="4"/>
+        <ListBox ItemsSource="{Binding Source={StaticResource cvs4}}" DisplayMemberPath="RiverName" Width="100" Grid.Row="4" Grid.Column="1"/>
+        <Button Content="Sort first view descending" Click="SortCvs3DescendingHandler" Margin="8" Grid.Row="5" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
