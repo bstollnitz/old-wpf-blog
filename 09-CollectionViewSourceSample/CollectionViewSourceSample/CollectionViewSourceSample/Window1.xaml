@@ -1,0 +1,25 @@
+﻿<?Mapping XmlNamespace="local" ClrNamespace="CollectionViewSourceSample" ?>
+<Window x:Class="CollectionViewSourceSample.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+	xmlns:local="local" 
+	Title="CollectionViewSourceSample"
+	SizeToContent="WidthAndHeight"
+    >
+	<Window.Resources>
+		<local:GreekGods x:Key="source" />
+		<CollectionViewSource Source="{StaticResource source}" x:Key="cvs"/>
+	</Window.Resources>
+
+	<Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10">
+		<StackPanel Orientation="Horizontal">
+			
+			<ListBox ItemsSource="{Binding Source={StaticResource cvs}}" DisplayMemberPath="Name"/>
+			<ListBox ItemsSource="{Binding Source={StaticResource cvs}}" DisplayMemberPath="Name"/>
+			
+			<ListBox ItemsSource="{StaticResource source}" IsSynchronizedWithCurrentItem="True" DisplayMemberPath="Name"/>
+			<ListBox ItemsSource="{StaticResource source}" IsSynchronizedWithCurrentItem="True" DisplayMemberPath="Name"/>
+		
+		</StackPanel>
+	</Border>
+</Window>
