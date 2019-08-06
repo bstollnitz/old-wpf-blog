@@ -1,6 +1,6 @@
 # How to add labels to a WPF pie chart
 
-*Update April 4 2010: The LabeledPieChart code in this post has been updated to the latest WPF and Silverlight toolkits. You can find more details in <a href="http://www.zagstudio.com/blog/507">this blog post</a>.
+*Update April 4 2010: The LabeledPieChart code in this post has been updated to the latest WPF and Silverlight toolkits. You can find more details in <a href="..\67-PieChartWithLabelsUpdates">this blog post</a>.
 
 
 The <a href="http://wpf.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=29117">WPF Toolkit</a> and <a href="http://www.codeplex.com/Silverlight">Silverlight Toolkit</a> both include a very versatile chart control. Although support for labels (or annotations) is a frequently requested feature, it is not yet present in the current toolkits. <a href="http://blogs.msdn.com/delay/archive/2009/07/27/simple-column-labels-you-can-create-at-home-re-templating-the-silverlight-wpf-data-visualization-columndatapoint-to-add-annotations.aspx">David Anson</a> blogged about a great solution to add labels to a ColumnSeries. In the next few posts, I will talk about one way to add labels to a PieSeries.

@@ -1,9 +1,9 @@
 # How to port the WPF labeled pie chart to Silverlight
 
-*Update April 4 2010: The LabeledPieChart code in this post has been updated to the latest WPF and Silverlight toolkits. You can find more details in <a href="http://www.zagstudio.com/blog/507">this blog post</a>.
+*Update April 4 2010: The LabeledPieChart code in this post has been updated to the latest WPF and Silverlight toolkits. You can find more details in <a href="..\67-PieChartWithLabelsUpdates">this blog post</a>.
 
 
-<a href="http://www.zagstudio.com/blog/502">Two posts ago</a> I showed a possible solution to add labels to a WPF pie chart. <a href="http://www.zagstudio.com/blog/503">In my last post</a>, I explained some implementation details of that solution. In this blog post, I will show the steps I took to port the labeled pie chart to Silverlight.
+<a href="..\54-PieChartWithLabels">Two posts ago</a> I showed a possible solution to add labels to a WPF pie chart. <a href="..\55-PieChartWithLabelsSilverlight">In my last post</a>, I explained some implementation details of that solution. In this blog post, I will show the steps I took to port the labeled pie chart to Silverlight.
 
 The Silverlight and WPF teams do their best to ensure that porting a Silverlight application to WPF is a smooth experience. This is expected, since Silverlight is (for the most part) a subset of WPF. Porting WPF applications to Silverlight, on the other hand, can be pretty tricky. The Silverlight and WPF teams are not specifically supporting this scenario, but the reality is that in the real world, many people need to do just that. I decided to port my WPF labeled pie chart to Silverlight to see how many issues I would come across and to document the workarounds. 
 
@@ -207,7 +207,7 @@ As a workaround, I merged the data template into the control template so that I 
 
 ## WPF's Polyline rendering bug is not present in Silverlight
 
-To end on a high note, I was able to remove the workaround for the Polyline rendering bug I struggled with in the WPF version of this code. As I explained in my <a href="http://www.zagstudio.com/blog/503">previous post</a>, if I placed a Polyline in the label's template and modified its points whenever the label position changed, WPF would occasionally render the Polyline incorrectly. To work around the issue, I had to create a new Polyline every time the label was repositioned, which is not as efficient.
+To end on a high note, I was able to remove the workaround for the Polyline rendering bug I struggled with in the WPF version of this code. As I explained in my <a href="..\55-PieChartWithLabelsSilverlight">previous post</a>, if I placed a Polyline in the label's template and modified its points whenever the label position changed, WPF would occasionally render the Polyline incorrectly. To work around the issue, I had to create a new Polyline every time the label was repositioned, which is not as efficient.
 
 I was glad to see that this bug is not present in Silverlight. So I added the Polyline to the PieChartLabel's template and simply changed its points in code. You can see the XAML containing the Polyline in the Silverlight Style in the previous section. The code that adds the points to the Polyline instead of creating a new Polyline can be found in the PositionConnected() method of PieChartLabel. This is a straightforward change, so I won't show it here.
 

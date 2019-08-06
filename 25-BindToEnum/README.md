@@ -30,7 +30,7 @@ Binding to this method can easily be done in XAML by using ObjectDataProvider:
 		<ComboBox ItemsSource="{Binding Source={StaticResource odp}}" IsSynchronizedWithCurrentItem="true"/>
 	</StackPanel>
 
-I explained binding to a method using ObjectDataProvider in an <a href="http://www.zagstudio.com/blog/438">earlier post</a>. As you can see, there is nothing special about using ObjectDataProvider to bind to a *static* method (with the exception of the bug in Feb CTP).
+I explained binding to a method using ObjectDataProvider in an <a href="..\19-ObjectDataProviderSample">earlier post</a>. As you can see, there is nothing special about using ObjectDataProvider to bind to a *static* method (with the exception of the bug in Feb CTP).
 
 Keep in mind that the values of the enumeration will be displayed in the ComboBox in the order they are defined (though you can control their order by sorting them with the help of a CollectionViewSource).
 

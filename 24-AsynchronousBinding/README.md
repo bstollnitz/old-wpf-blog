@@ -10,7 +10,7 @@ I will distinguish two very different scenarios in this sample:
 
 ## Slow data source
 
-I talked in an <a href="http://www.zagstudio.com/blog/438">earlier post</a> about ObjectDataPovider, and mentioned that you will need it if you want to retrieve your data asynchronously. Well, here is the scenario where you would want to use it: when your whole data source is slow. I simulated a slow data source with the following code:
+I talked in an <a href="..\19-ObjectDataProviderSample">earlier post</a> about ObjectDataPovider, and mentioned that you will need it if you want to retrieve your data asynchronously. Well, here is the scenario where you would want to use it: when your whole data source is slow. I simulated a slow data source with the following code:
 
 	public class SlowDataSource
 	{

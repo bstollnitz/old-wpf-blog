@@ -11,10 +11,10 @@ Discovering and solving these issues can be tricky.  It's often difficult to see
 
 FocusWatcher helps in two ways: it draws a red outline around the control that has focus, and it displays the type, name, and content of the focused control in a text overlay.  These visual aids are updated continuously to track the focused control.  In the screenshot below, we're running FocusWatcher on the <a href="http://code.msdn.microsoft.com/windowsapps/Getting-started-with-C-and-41e15af5">Windows SDK blog reader sample</a> and you can see that keyboard focus is on a ListViewItem whose content is a FeedItem.
 
-<img src="http://www.zagstudio.com/blogfiles/76/76FocusWatcher.png" class="postImage" />
+<img src="Images/FocusWatcher.png" class="postImage" />
 
 Here's how to use FocusWatcher to solve issues in your own Windows Store application:
-1. Download <a href="http://www.zagstudio.com/blogfiles/76/FocusWatcher.zip">FocusWatcher.zip</a>.
+1. Download FocusWatcher.cs.
 2. Add FocusWatcher.cs to your project.
 3. In App.xaml.cs, within the app's OnLaunched method, just after calling Window.Current.Activate(), add a call to ZagStudio.Helpers.FocusWatcher.Start().
 4. Build and run.

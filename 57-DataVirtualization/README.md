@@ -1,6 +1,6 @@
 # Improving on existing WPF data virtualization solutions
 
-In a <a href="http://www.zagstudio.com/blog/498">previous post</a>, I compared two data virtualization techniques implemented by Paul McClean and Vincent Van Den Berghe for WPF. In this post, I describe a solution that combines some of the best features of both. I started with Paul's solution, eliminated a few limitations, and incorporated some of Vincent's ideas.
+In a <a href="..\52-DataVirtualization">previous post</a>, I compared two data virtualization techniques implemented by Paul McClean and Vincent Van Den Berghe for WPF. In this post, I describe a solution that combines some of the best features of both. I started with Paul's solution, eliminated a few limitations, and incorporated some of Vincent's ideas.
 
 ## Selection
 

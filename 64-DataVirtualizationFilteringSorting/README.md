@@ -1,6 +1,6 @@
 # How to sort data virtualized items in WPF
 
-You saw in <a href="http://www.zagstudio.com/blog/411">my last post</a> how you can filter data-virtualized items by delegating the filtering operation to the server. In this post, I will show you how you can sort data-virtualized items on the server by interacting with the DataGrid UI. The code in this post extends the code in the filtering solution from my other post, so make sure you read that first.
+You saw in <a href="..\62-DataVirtualizationFiltering">my last post</a> how you can filter data-virtualized items by delegating the filtering operation to the server. In this post, I will show you how you can sort data-virtualized items on the server by interacting with the DataGrid UI. The code in this post extends the code in the filtering solution from my other post, so make sure you read that first.
 
 As a reminder, the solution I showed in my earlier post exposes a stored procedure called "GetSortedFilteredCustomers" which allows us to sort and filter a subset of customers (we use indices to specify the subset). We can indicate the sorting we want by passing the SQL sorting syntax as a string to the data provider:
 

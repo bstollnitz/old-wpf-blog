@@ -1,6 +1,6 @@
 # How to improve TreeView's performance – Part II
 
-In my <a href="http://www.zagstudio.com/blog/475">previous post</a>, I discussed some of the performance limitations of TreeView. In particular, I mentioned the three facts about our current implementation that may lead to performance issues, depending on your scenario:
+In my <a href="..\39-TreeViewPerformancePart1">previous post</a>, I discussed some of the performance limitations of TreeView. In particular, I mentioned the three facts about our current implementation that may lead to performance issues, depending on your scenario:
 
 - UI elements stay in memory even when collapsed.
 - There is no UI virtualization.

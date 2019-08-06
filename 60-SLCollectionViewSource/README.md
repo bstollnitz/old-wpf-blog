@@ -1,7 +1,7 @@
 # Silverlight's CollectionViewSource
 
 
-In my <a href="http://www.zagstudio.com/blog/387">last post</a>, I explained the reasoning behind adding CollectionViewSource to WPF. In this post I will talk about CollectionViewSource in Silverlight (introduced in Silverlight 3) and compare it with its WPF counterpart.
+In my <a href="..\59-WPFCollectionViewSource">last post</a>, I explained the reasoning behind adding CollectionViewSource to WPF. In this post I will talk about CollectionViewSource in Silverlight (introduced in Silverlight 3) and compare it with its WPF counterpart.
 
 If you recall from my last post, CollectionViewSource was added to WPF mainly to permit view-related scenarios to be expressed in XAML (so they could be tooled), and also to aid in remembering the current item of previously displayed collections. The reasons for adding CollectionViewSource to Silverlight were very different. Before the introduction of CollectionViewSource, Silverlight collections were not automatically wrapped by views - in fact the concept of "views" didn't even exist in Silverlight 2. There was no way to sort or filter a collection (other than modifying the collection itself), or to build a master-detail scenario based on currency (although you could create a master-detail scenario based on selection). The introduction of CollectionViewSource enabled all of those scenarios in Silverlight, while improving compatibility with WPF.
 

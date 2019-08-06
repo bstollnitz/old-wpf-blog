@@ -4,7 +4,7 @@ TechEd Barcelona is coming up next week, between Tuesday the 7th and Friday the 
 
 ![](Images/TechEdBarcelona.GIF)
 
-In my <a href="http://www.zagstudio.com/blog/463">last post</a>, I talked about a way to bind a Polygon's Points to a data source that had the following advantages:
+In my <a href="..\33-PolygonBinding2">last post</a>, I talked about a way to bind a Polygon's Points to a data source that had the following advantages:
 - Changes in the source are propagated to the UI.
 - There is a clean separation between the UI and data layers.
 - It scales well for scenarios where you're making small frequent changes to the source collection.

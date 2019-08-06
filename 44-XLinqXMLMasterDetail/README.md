@@ -2,9 +2,9 @@
 
 I have explained in previous posts how to implement:
 
-- A two-level Master-Detail scenario using objects as data source <a href="http://www.zagstudio.com/blog/355">here</a>.
--  A three level Master-Detail scenario using objects as data source <a href="http://www.zagstudio.com/blog/356">here</a> 
-- A three level Master-Detail scenario using ADO.NET <a href="http://www.zagstudio.com/blog/372">here</a>.  The two-level version of this scenario with ADO.NET should be obvious based on the samples above.
+- A two-level Master-Detail scenario using objects as data source <a href="..\10-MasterDetail">here</a>.
+-  A three level Master-Detail scenario using objects as data source <a href="..\11-MasterDetailThreeLevels">here</a> 
+- A three level Master-Detail scenario using ADO.NET <a href="..\18-ThreeLevelMasterDetailADO">here</a>.  The two-level version of this scenario with ADO.NET should be obvious based on the samples above.
 
 In this post, I will explain how to implement a two and three level Master-Detail when binding to XLinq and XML. 
 
@@ -35,12 +35,12 @@ The two level Master-Detail scenario works very similarly regardless of the data
 		<ContentControl Name="Detail2" Content="{Binding}" ContentTemplate="{StaticResource XMLDetailPlanetTemplate}" ... />
 	</Grid>
 
-Notice that both the ListBox and ContentControl elements have the exact same empty Binding as content. This is possible because, as I explained in a <a href="http://www.zagstudio.com/blog/355">previous post</a>, the data binding engine detects that the ContentControl can not display a list of items, and grabs the current item of that list instead. This is true for every data source type.
+Notice that both the ListBox and ContentControl elements have the exact same empty Binding as content. This is possible because, as I explained in a <a href="..\10-MasterDetail">previous post</a>, the data binding engine detects that the ContentControl can not display a list of items, and grabs the current item of that list instead. This is true for every data source type.
 
 
 ## Two level Master-Detail with XLinq
 
-I started by creating an XElement by loading the same XML file shown above, and used it as the data source for the XLinq scenario. In my <a href="http://www.zagstudio.com/blog/483">last blog post</a> I loaded the XML in code, so this time I show how to do this in XAML, using ObjectDataProvider.
+I started by creating an XElement by loading the same XML file shown above, and used it as the data source for the XLinq scenario. In my <a href="..\43-BindToXLinq">last blog post</a> I loaded the XML in code, so this time I show how to do this in XAML, using ObjectDataProvider.
 
 	<ObjectDataProvider ObjectType="{x:Type xlinq:XElement}" MethodName="Load" x:Key="PlanetsODP">
 		<ObjectDataProvider.MethodParameters>
@@ -93,7 +93,7 @@ The first ListBox simply binds to the collection of Mountains (notice the XPath 
 
 The second ListBox drills into the collection of Lifts of each Mountain. This is implemented internally by executing an XPath query on the instance of the Moutains collection shown in the first ListBox, with the syntax found in the XPath property. The two collections can be kept in sync because the second collection instance is a subcollection of the first.
 
-If you've seen my post on <a href="http://www.zagstudio.com/blog/356">three level Master-Detail when binding to objects</a>, you probably expect the following syntax to work for the third ListBox (a similar syntax works when binding to objects):
+If you've seen my post on <a href="..\11-MasterDetailThreeLevels">three level Master-Detail when binding to objects</a>, you probably expect the following syntax to work for the third ListBox (a similar syntax works when binding to objects):
 
 	<ListBox ... ItemsSource="{Binding XPath=Lifts/Lift/Runs/Run}" ... />
 
@@ -105,7 +105,7 @@ You're probably wondering why I'm binding to the DataContext and the ItemsSource
 
 	<ListBox ... ItemsSource="{Binding ElementName=MiddleListBox4, Path=SelectedItem, XPath=Runs/Run}" ... />
 
-As I explained in <a href="http://www.zagstudio.com/blog/483">my previous post</a>, it's actually possible (and sometimes very useful) to have a Path and XPath in the same Binding. Keep in mind, however, that whenever XPath and Path are both specified, the XPath is always executed before the Path, independently of the order in which you specify them in the Binding. We decided on this order of execution because this feature is used mostly to drill into properties of XmlElement (such as HasAttributes, InnerXml or Name). In the Master-Detail sample, we need to first get the SelectedItem (which is an XmlElement), and then execute the XPath query on it. Unfortunately there is no way for us to specify in a Binding that we want to execute the Path before the XPath. And this is the reason I had to break up the Binding into two: the part with the Path needs to be executed first so it goes in the DataContext, and the XPath needs to be executed second, so it goes in the ItemsSource.
+As I explained in <a href="..\43-BindToXLinq">my previous post</a>, it's actually possible (and sometimes very useful) to have a Path and XPath in the same Binding. Keep in mind, however, that whenever XPath and Path are both specified, the XPath is always executed before the Path, independently of the order in which you specify them in the Binding. We decided on this order of execution because this feature is used mostly to drill into properties of XmlElement (such as HasAttributes, InnerXml or Name). In the Master-Detail sample, we need to first get the SelectedItem (which is an XmlElement), and then execute the XPath query on it. Unfortunately there is no way for us to specify in a Binding that we want to execute the Path before the XPath. And this is the reason I had to break up the Binding into two: the part with the Path needs to be executed first so it goes in the DataContext, and the XPath needs to be executed second, so it goes in the ItemsSource.
 
 
 ## Three level Master-Detail with XLinq

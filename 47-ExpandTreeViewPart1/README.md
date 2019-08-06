@@ -36,8 +36,6 @@ In WPF, this can be done by adding an implicit style to the resources of your pa
 
 Couldn't be any easier. 
 
-If you have WPF installed on your machine, you can <a href="http://www.zagstudio.com/blogfiles/47/ExpandTreeViewWPF.xbap" target="_blank" >click here</a> to see this code running as an xbap. I also link to the source at the end of this post.
-
 ## Silverlight
 
 Now let's look at the differences between the WPF solution and the corresponding Silverlight one.
@@ -77,11 +75,6 @@ Fortunately, the Silverlight Toolkit contains a solution to this problem that pr
 	<controls:TreeView ItemsSource="{StaticResource treeOfLife}" ItemTemplate="{StaticResource treeOfLifeTemplate}" theming:ImplicitStyleManager.ApplyMode="Auto"/>
 
 And now the implicit style is applied and the TreeView expands all items on load! 
-
-Click on the following image to see the Silverlight project running on a separate page.
-
-<a href="http://www.zagstudio.com/blogfiles/47/TestPage.html">
-<img title="Click to view Silverlight app" src="Images/47ExpandTreeViewPart1.PNG" class="postImage" /></a>
 
 ## ImplicitStyleManager
 

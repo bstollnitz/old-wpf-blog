@@ -1,6 +1,6 @@
 # How to position data bound items
 
-A long time ago in a galaxy far, far away, we wrote about the <a href="http://www.zagstudio.com/blog/470">power of styles and templates in WPF</a>, showing how ordinary-looking list box items could be transformed into a visualization of the planets in our solar system. Recently, we noticed that some of the techniques described there don't work in Windows Store applications for Windows 8.  In this post, we'll revive the planets list box and describe the changes required to make it to work in a Win8 app.
+A long time ago in a galaxy far, far away, we wrote about the <a href="..\37-PlanetsListBox">power of styles and templates in WPF</a>, showing how ordinary-looking list box items could be transformed into a visualization of the planets in our solar system. Recently, we noticed that some of the techniques described there don't work in Windows Store applications for Windows 8.  In this post, we'll revive the planets list box and describe the changes required to make it to work in a Win8 app.
 
 As in the WPF version, the first step is to create a data source and use it as the source for a data bound list box:
 

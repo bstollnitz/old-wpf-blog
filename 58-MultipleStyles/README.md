@@ -124,7 +124,7 @@ This syntax is useful provided that I have instances of both styles within Provi
 	{
 	}
 
-But that doesn't work. And even if the params limitation didn't exist, we would probably hit another limitation of markup extensions, where we would have to use property-element syntax instead of attribute syntax to specify the static resources, which is verbose and cumbersome (I explain this bug better in a <a href="http://www.zagstudio.com/blog/463">previous blog post</a>). And even if both those limitations didn't exist, I would still rather write the list of styles using just their names - it is shorter and simpler to read than a StaticResource for each one. 
+But that doesn't work. And even if the params limitation didn't exist, we would probably hit another limitation of markup extensions, where we would have to use property-element syntax instead of attribute syntax to specify the static resources, which is verbose and cumbersome (I explain this bug better in a <a href="..\33-PolygonBinding2">previous blog post</a>). And even if both those limitations didn't exist, I would still rather write the list of styles using just their names - it is shorter and simpler to read than a StaticResource for each one. 
 
 The solution is to create a StaticResourceExtension using code. Given a style key of type string and a service provider, I can use StaticResourceExtension to retrieve the actual style instance. Here is the syntax:
 

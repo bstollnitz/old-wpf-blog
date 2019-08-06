@@ -4,7 +4,7 @@ For those of you in Europe, I will be giving a talk at the Oredev conference in 
 	
 <img style="DISPLAY: block; MARGIN: 0px auto 10px; TEXT-ALIGN: center" alt="" src="Images/Oredev.jpg" border="0" />
 	
-In my <a href="http://www.zagstudio.com/blog/490">last post</a>, I showed how you can expand all items in a TreeView at load time. In WPF, this can be done by simply adding an implicit style to the resources, and in Silverlight we need a little help from ImplicitStyleManager to achieve the same behavior.
+In my <a href="..\47-ExpandTreeViewPart1">last post</a>, I showed how you can expand all items in a TreeView at load time. In WPF, this can be done by simply adding an implicit style to the resources, and in Silverlight we need a little help from ImplicitStyleManager to achieve the same behavior.
 
 However, applications typically allow more complex interaction with a TreeView. In particular, they often permit users to expand all nodes, collapse all nodes, and expand the tree to reveal a particular node. I will show you one way to accomplish these tasks in this post, and a different way in my next post.
 
@@ -200,8 +200,6 @@ If you try this, however, you will notice that once you collapse a TreeViewItem 
 		<Setter Property="IsSelected" Value="{Binding Path=IsSelected, Mode=TwoWay}" />
 	</Style>
 
-If you have WPF installed on your machine, you can <a href="http://www.zagstudio.com/blogfiles/48/ExpandTreeViewWPF.xbap" target="_blank" >click here</a> to see this code running as an xbap. I also link to the source at the end of this post.
-
 ## Silverlight
 
 Most of the code and XAML I showed for WPF works in Silverlight too, with the exception of the Binding in the Setter's Value, since Silverlight currently doesn't support that feature. In order to work around this limitation, I created custom TreeView and TreeViewItem classes that derive from the Toolkit classes and override GetContainerForItemOverride. This method is called to create each TreeViewItem container, so I was able to include the Bindings through code at the moment these containers are created.
@@ -222,9 +220,5 @@ Most of the code and XAML I showed for WPF works in Silverlight too, with the ex
 	}
 
 Also, unfortunately we have a bug in the Toolkit TreeView  that occasionally causes more than one item to appear selected. Hopefully we'll get that fixed for the next release.
-
-Click on the following image to see the Silverlight project running on a separate page.
-
-<a href="http://www.zagstudio.com/blogfiles/48/TestPage.html"><img title="Click to view Silverlight app" src="Images/48ExpandTreeViewPart2.PNG" class="postImage" /></a>
 
 And that's all for today. In my next post, I will discuss a third way of expanding, collapsing  and selecting TreeViewItems.

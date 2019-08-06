@@ -1,6 +1,6 @@
 # How to expand items in a TreeView – Part III
 
-This is the third of a three-part series about expanding TreeViewItems. In the <a href="http://www.zagstudio.com/blog/490">first post</a> I explained how to use an implicit Style to expand all TreeViewItems at load time. In the <a href="http://www.zagstudio.com/blog/491">second post</a> I showed how you can drive expansion and selection of items using an intermediate data source. In this post, I will explain how you can expand and select TreeViewItems using the dispatcher.
+This is the third of a three-part series about expanding TreeViewItems. In the <a href="..\47-ExpandTreeViewPart1">first post</a> I explained how to use an implicit Style to expand all TreeViewItems at load time. In the <a href="..\48-ExpandTreeViewPart2">second post</a> I showed how you can drive expansion and selection of items using an intermediate data source. In this post, I will explain how you can expand and select TreeViewItems using the dispatcher.
 
 Expanding all TreeViewItems by setting the IsExpanded property on the items directly is not as simple as doing a tree walk and marking this property as you go. The problem is that after expanding a TreeViewItem, you need to return control to WPF or Silverlight so that the children TreeViewItems can be instantiated, before it's their turn to be expanded. Fortunately, the Dispatcher can be used on both of these technologies to ensure the instantiation of the TreeViewItems.
 
@@ -256,10 +256,6 @@ The code for expanding and selecting one item is also quite a bit different, and
 	}
 
 This is all the code you need to expand and collapse TreeViewItems.
-
-Click on the following image to see the Silverlight project running on a separate page.
-
-<a href="http://www.zagstudio.com/blogfiles/49/TestPage.html"><img title="Click to view Silverlight app" src="Images/49ExpandTreeViewPart3.PNG" class="postImage" /></a>
 
 ## Which TreeView expansion solution should I use?
 

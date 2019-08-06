@@ -1,6 +1,6 @@
 # How to add custom sorting logic
 
-I showed in an <a href="http://www.zagstudio.com/blog/362">earlier post</a> how we can use CollectionViewSource to sort items in markup. This way of sorting allows us to pick Ascending or Descending sorting, but it doesn't provide any flexibility beyond that. Today I will show you how you can write your own sorting logic that enables full control over the order of items in a view.
+I showed in an <a href="..\14-SortingGroups">earlier post</a> how we can use CollectionViewSource to sort items in markup. This way of sorting allows us to pick Ascending or Descending sorting, but it doesn't provide any flexibility beyond that. Today I will show you how you can write your own sorting logic that enables full control over the order of items in a view.
 
 When I write a new blog sample, I create a directory named with a number followed by a short description of the scenario. For example, for today's post, the name of the directory is 21CustomSorting. Windows Explorer knows how to do the right thing to order all those directories: the first one is 1DataContext, and all the others are displayed in increasing numeric order until 21CustomSorting. This is not a simple ascending string sort, though. A traditional string sort would display 10MasterDetail - 19ObjectDataProviderSample, 1DataContext, 20InsertingSeparators, 21CustomSorting, 2EmptyBinding - 9CollectionViewSourceSample, which is obviously not what I want. I will show you today how you can order strings that start with numbers the same way as Explorer. I will also give you a quick overview of Avalon's view classes.
 
@@ -10,7 +10,7 @@ A view is a layer on top of a collection that allows us to sort, filter and grou
 
 - ListCollectionView is the view type created when the source implements IList. Compared to IEnumerable and ICollection, IList performs much better for large or dynamic lists because it provides an indexer, allowing us quick random access. In addition, IList allows sorting, grouping and filtering. But ideally your source collection derives from ObservableCollection&lt;T&gt;, the mother of all collections in the eyes of data binding, since it provides several extra goodies such as property and collection change notifications.
 
-- BindingListCollectionView is the type of view created by Avalon when the source collection implements IBindingList. This is the view we deal with in the ADO.NET scenario. It supports sorting and grouping, but not traditional filtering. Instead, it has an additional CustomFilter property that delegates filtering to the DataView (see <a href="http://www.zagstudio.com/blog/372">my post on ADO.NET</a> for more details).
+- BindingListCollectionView is the type of view created by Avalon when the source collection implements IBindingList. This is the view we deal with in the ADO.NET scenario. It supports sorting and grouping, but not traditional filtering. Instead, it has an additional CustomFilter property that delegates filtering to the DataView (see <a href="..\18-ThreeLevelMasterDetailADO">my post on ADO.NET</a> for more details).
 
 Note that if your source collection implements both IBindingList and IList, IBindingList has priority, and a BindingListCollectionView is created.
 

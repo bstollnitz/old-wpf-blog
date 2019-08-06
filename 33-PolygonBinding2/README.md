@@ -1,6 +1,6 @@
 # How to data bind a Polygon’s Points to a data source – Part II
 
-In my <a href="http://www.zagstudio.com/blog/461">last blog post</a>, I talked about one solution to data bind a Polygon's Points to a collection such that:
+In my <a href="..\32-PolygonBinding">last blog post</a>, I talked about one solution to data bind a Polygon's Points to a collection such that:
 - Changes in the source are propagated to the UI.
 - There is a clean separation between the UI and data layers.
 

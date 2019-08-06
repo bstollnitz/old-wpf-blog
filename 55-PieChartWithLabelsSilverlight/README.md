@@ -1,13 +1,13 @@
 # How to add labels to a WPF pie chart – Implementation details
 
-*Update April 4 2010: The LabeledPieChart code in this post has been updated to the latest WPF and Silverlight toolkits. You can find more details in <a href="http://www.zagstudio.com/blog/507">this blog post</a>.
+*Update April 4 2010: The LabeledPieChart code in this post has been updated to the latest WPF and Silverlight toolkits. You can find more details in <a href="..\67-PieChartWithLabelsUpdates">this blog post</a>.
 
 
-In my <a href="http://bea.stollnitz.com/blog/?p=353">last blog post</a>, I showed how you can use a custom control to add labels to a WPF pie chart. In this post I will discuss its implementation.
+In my <a href="..\54-PieChartWithLabels">last blog post</a>, I showed how you can use a custom control to add labels to a WPF pie chart. In this post I will discuss its implementation.
 
 I started by thinking about what I wanted the usage syntax to look like. Ideally, I would like to create a LabeledPieSeries class that derives from PieSeries, and that exposes a LabelStyle property. This would make using a pie series with labels as easy as using any other chart series, which WPF chart users are already familiar with (the <a href="http://silverlight.codeplex.com/Wiki/View.aspx?title=Silverlight%20Toolkit%20Overview%20Part%202">Codeplex charting overview</a> shows what that syntax would look like). Unfortunately, PieSeries is currently sealed, so I had to search for another alternative. 
 
-Often, when faced with this design constraint, using a behavior is a good alternative. A behavior is simply an attached property that provides access to the element it's attached to, and therefore to the whole tree it belongs to. I used a similar technique in my <a href="http://www.zagstudio.com/blog/488">drag and drop blog post</a>. More recently, Blend 3 has embraced this technique by providing support for applying behaviors at design time, and has generated a community around the creation of <a href="http://gallery.expression.microsoft.com/en-us/">reusable behaviors</a>. You can read more about Blend's support for behaviors in <a href="http://electricbeach.org/?p=147">Christian's blog</a>.
+Often, when faced with this design constraint, using a behavior is a good alternative. A behavior is simply an attached property that provides access to the element it's attached to, and therefore to the whole tree it belongs to. I used a similar technique in my <a href="..\46-DragDropListBox">drag and drop blog post</a>. More recently, Blend 3 has embraced this technique by providing support for applying behaviors at design time, and has generated a community around the creation of <a href="http://gallery.expression.microsoft.com/en-us/">reusable behaviors</a>. You can read more about Blend's support for behaviors in <a href="http://electricbeach.org/?p=147">Christian's blog</a>.
 
 ## Behavior
 
@@ -60,7 +60,7 @@ The AddLabel method creates a new PieChartLabel, sets its properties - many of t
 		labelArea.Children.Remove(label);
 	};
 
-The next step was to figure out how the labels were going to be positioned in the Canvas. I decided to have four "display modes", which I explain in my <a href="http://www.zagstudio.com/blog/502">previous blog post</a>. Picking the desired display mode can be done through a DisplayMode property on PieChartLabel. Below I discuss the implementation of each mode.
+The next step was to figure out how the labels were going to be positioned in the Canvas. I decided to have four "display modes", which I explain in my <a href="..\54-PieChartWithLabels">previous blog post</a>. Picking the desired display mode can be done through a DisplayMode property on PieChartLabel. Below I discuss the implementation of each mode.
 
 ## ArcMidpoint mode
 
@@ -329,7 +329,7 @@ I also had to expose the SelectedItem property, but with a slightly different be
 
 By helping you understand this implementation of pie charts labels, my goal is to inspire you to extend this code and adapt it to your particular scenario. And hopefully you learned some new tricks that will help you in other scenarios with similar technical problems.
 
-After I wrote my <a href="http://www.zagstudio.com/blog/502">last blog post</a>, I fixed a couple of bugs in the code, so if you're using the old code make sure you download it again.
+After I wrote my <a href="..\54-PieChartWithLabels">last blog post</a>, I fixed a couple of bugs in the code, so if you're using the old code make sure you download it again.
 
 In my next blog post, I will talk about the experience of porting this code to Silverlight.
 

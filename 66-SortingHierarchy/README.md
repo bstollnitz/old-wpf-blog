@@ -1,6 +1,6 @@
 # How to sort a hierarchy
 
-Today's blog post discusses how you can sort data items at each level of a hierarchical user interface in WPF and Silverlight. Instead of just giving you the final solution, I will first show a few approaches that you might expect to work, and I'll explain why they don't work.  All of the approaches will use a single data source: a list of State objects, each of which contains a list of County objects, each of which in turn contains a list of City objects.  I'll assume you're familiar with the sorting abilities of CollectionViewSource (see <a href="http://www.zagstudio.com/blog/387">this post</a>) and binding to hierarchical data (see <a href="http://www.zagstudio.com/blog/356">this post</a>).
+Today's blog post discusses how you can sort data items at each level of a hierarchical user interface in WPF and Silverlight. Instead of just giving you the final solution, I will first show a few approaches that you might expect to work, and I'll explain why they don't work.  All of the approaches will use a single data source: a list of State objects, each of which contains a list of County objects, each of which in turn contains a list of City objects.  I'll assume you're familiar with the sorting abilities of CollectionViewSource (see <a href="..\59-WPFCollectionViewSource">this post</a>) and binding to hierarchical data (see <a href="..\11-MasterDetailThreeLevels">this post</a>).
 
 ## WPF
 
@@ -221,5 +221,5 @@ The solution that I showed for WPF also works for Silverlight with some minor ch
 		}
 	}
 
-Other minor changes had to be made to the Silverlight project. In particular, HierarchicalDataTemplate, TabControl and TreeView had to refer to the Silverlight SDK, since they're not present in the main download. Also, Silverilght 3 doesn't support implicit styles, so I used the toolkit's ImplicitStyleManager to expand all TreeViewItems (you can read more about this technique <a href="http://www.zagstudio.com/blog/490">here</a>). Keep in mind that Silverlight 4 supports implicit styles natively, so pretty soon there will be no need to use ImplicitStyleManager any more.
+Other minor changes had to be made to the Silverlight project. In particular, HierarchicalDataTemplate, TabControl and TreeView had to refer to the Silverlight SDK, since they're not present in the main download. Also, Silverilght 3 doesn't support implicit styles, so I used the toolkit's ImplicitStyleManager to expand all TreeViewItems (you can read more about this technique <a href="..\47-ExpandTreeViewPart1">here</a>). Keep in mind that Silverlight 4 supports implicit styles natively, so pretty soon there will be no need to use ImplicitStyleManager any more.
 

@@ -1,10 +1,10 @@
 # Data virtualization
 
-My <a href="http://www.zagstudio.com/blog/497">last post</a> covered the current UI virtualization support on Silverlight and WPF. In this post, I will discuss another technique that helps improve performance when dealing with large data sets: data virtualization. 
+My <a href="..\51-UIVirtualization">last post</a> covered the current UI virtualization support on Silverlight and WPF. In this post, I will discuss another technique that helps improve performance when dealing with large data sets: data virtualization. 
 
 A control that uses data virtualization knows to keep in memory no more data items than the ones needed for display. For example, if a data-virtualized ListBox is data bound to 1,000,000 data items and only displays 100 at a single point in time, it only keeps about 100 data items in memory. If the user scrolls, the data-virtualized ListBox knows to swap the items in memory in a way that optimizes performance and memory consumption.
 
-I talked about a possible solution that provides partial data virtualization for TreeView in a <a href="http://www.zagstudio.com/blog/477">previous post</a>. I discussed that solution in the context of WPF, but it could just as easily be used for Silverlight. The discussion in this post addresses data virtualization for non-hierarchical scenarios.
+I talked about a possible solution that provides partial data virtualization for TreeView in a <a href="..\40-TreeViewPerformancePart2">previous post</a>. I discussed that solution in the context of WPF, but it could just as easily be used for Silverlight. The discussion in this post addresses data virtualization for non-hierarchical scenarios.
 
 ## Data virtualization in WPF
 
@@ -149,5 +149,5 @@ I am not aware of any custom data virtualization solution based on scrolling tha
 
 
 
-*Update: If you're looking for a data virtualization solution for WPF, make sure you also read <a href="http://www.zagstudio.com/blog/378">my more recent post</a>.
+*Update: If you're looking for a data virtualization solution for WPF, make sure you also read <a href="..\57-DataVirtualization">my more recent post</a>.
 
