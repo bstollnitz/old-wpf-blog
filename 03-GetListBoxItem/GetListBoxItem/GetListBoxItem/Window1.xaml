@@ -1,0 +1,23 @@
+﻿<?Mapping ClrNamespace="GetListBoxItem" XmlNamespace="local"?>
+<Window x:Class="GetListBoxItem.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+	xmlns:local="local" 
+    Title="GetListBoxItem"
+	SizeToContent="WidthAndHeight"
+    >
+	<Window.Resources>
+		<local:GreekGods x:Key="greekGods"/>
+
+		<DataTemplate x:Key="itemTemplate">
+			<TextBlock Text="{Binding Path=Name}" />
+		</DataTemplate>
+	</Window.Resources>
+
+	<Border BorderBrush="RoyalBlue" BorderThickness="2" Margin="25" Padding="5">
+		<StackPanel>
+			<ListBox ItemsSource="{StaticResource greekGods}" ItemTemplate="{StaticResource itemTemplate}" IsSynchronizedWithCurrentItem="true" Width="200" Name="listBox"/>
+			<Button Click="ButtonClick" Margin="5">Get ListBoxItem</Button>
+		</StackPanel>
+	</Border>
+</Window>
