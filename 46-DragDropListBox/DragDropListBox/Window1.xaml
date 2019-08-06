@@ -1,0 +1,78 @@
+﻿<Window x:Class="DragDropListBox.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:DragDropListBox"
+    Title="Drag and Drop Sample" Width="790" Height="500">
+	<Window.Resources>
+		<Style TargetType="ListBox">
+			<Setter Property="Height" Value="300" />
+			<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+		</Style>
+		
+		<DataTemplate x:Key="pictureTemplate">
+			<DataTemplate.Resources>
+				<Style TargetType="Image">
+					<Setter Property="Width" Value="50" />
+					<Setter Property="Height" Value="50" />
+					<Setter Property="Margin" Value="10" />
+				</Style>
+			</DataTemplate.Resources>
+			<Image Source="{Binding Path=Location}" />
+		</DataTemplate>
+
+		<DataTemplate x:Key="planetTemplateDrag">
+			<DataTemplate.Resources>
+				<Style TargetType="Image">
+					<Setter Property="Width" Value="50" />
+					<Setter Property="Height" Value="50" />
+					<Setter Property="Margin" Value="5" />
+				</Style>
+			</DataTemplate.Resources>
+			<StackPanel>
+				<Image Source="{Binding Path=Location}" />
+				<TextBlock Text="{Binding Path=Name}" TextAlignment="Center" FontWeight="Bold" />
+			</StackPanel>
+		</DataTemplate>
+
+		<ItemsPanelTemplate x:Key="panelTemplate">
+			<WrapPanel />
+		</ItemsPanelTemplate>
+		
+		<DataTemplate x:Key="descriptionTemplate">
+			<TextBlock Text="{Binding Path=Description}" TextWrapping="Wrap" Width="170" />
+		</DataTemplate>
+
+		<DataTemplate x:Key="nameTemplate">
+			<TextBlock Text="{Binding Path=Name}" FontWeight="Bold" />
+		</DataTemplate>
+	
+	</Window.Resources>
+	
+    <Grid Margin="30">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		
+		<ItemsControl Background="AliceBlue"
+		ItemsSource="{Binding Path=PicturesLeft}" ItemTemplate="{StaticResource pictureTemplate}" ItemsPanel="{StaticResource panelTemplate}" Grid.Column="0" Margin="0,0,30,0" 
+		local:DragDropHelper.IsDragSource="true" local:DragDropHelper.IsDropTarget="true" local:DragDropHelper.DragDropTemplate="{StaticResource planetTemplateDrag}"/>
+		
+		<ListView Background="AliceBlue"
+		ItemsSource="{Binding Path=PicturesRight}" Grid.Column="1" 
+		local:DragDropHelper.IsDragSource="true" local:DragDropHelper.IsDropTarget="true" local:DragDropHelper.DragDropTemplate="{StaticResource planetTemplateDrag}">
+			<ListView.View>
+				<GridView>
+					<GridView.Columns>
+						<GridViewColumn Header="Picture" CellTemplate="{StaticResource pictureTemplate}" />
+						<GridViewColumn Header="Name" CellTemplate="{StaticResource nameTemplate}" Width="60"/>
+						<GridViewColumn Header="Description" CellTemplate="{StaticResource descriptionTemplate}"/>
+					</GridView.Columns>
+				</GridView>
+			</ListView.View>
+		</ListView>
+	</Grid>
+</Window>
