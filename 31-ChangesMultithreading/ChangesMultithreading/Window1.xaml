@@ -1,0 +1,15 @@
+﻿<Window x:Class="ChangesMultithreading.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="ChangesMultithreading" Height="380" Width="300"
+    >
+	<Border Margin="20">
+		<StackPanel>
+			<ListBox Name="lb" Height="170" Margin="5"/>
+			<Button Click="Throw_Click" Margin="5">Throw</Button>
+			<Button Click="DelegateUIThread_Click" Margin="5">DelegateUIThread</Button>
+			<Button Click="DelegateUIThreadNotWorking_Click" Margin="5">DelegateUIThreadNotWorking</Button>
+			<Button Click="LockingOperations_Click" Margin="5">LockingOperations</Button>
+		</StackPanel>
+	</Border>
+</Window>
