@@ -1,0 +1,233 @@
+﻿<Window x:Class="BindToXLinq.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+    Title="Window1" Width="810" Height="500">
+	<Window.Resources>
+		<Style x:Key="PathSyntaxStyle" TargetType="TextBlock">
+			<Setter Property="FontWeight" Value="Bold" />
+			<Setter Property="FontSize" Value="12" />
+			<Setter Property="FontFamily" Value="Lucida Console" />
+			<Setter Property="Foreground" Value="#80001C" />
+		</Style>
+
+		<Style x:Key="SmallTitleStyle" TargetType="TextBlock">
+			<Setter Property="FontWeight" Value="Bold" />
+			<Setter Property="FontSize" Value="14" />
+			<Setter Property="Margin" Value="0,10,0,6" />
+		</Style>
+		
+		<Style TargetType="TabItem">
+			<Setter Property="Padding" Value="5" />
+		</Style>
+		
+		<Style TargetType="StackPanel" x:Key="MainStackPanel">
+			<Setter Property="Margin" Value="30,0,30,0" />
+		</Style>
+
+	</Window.Resources>
+
+	<Grid>
+		<TabControl TabStripPlacement="Left">
+			<TabItem Header="First Planet's Orbit">
+				<StackPanel Style="{StaticResource MainStackPanel}">
+					<StackPanel Name="XLinqPanel2">
+						<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq in XAML"/>
+						<TextBlock Style="{StaticResource PathSyntaxStyle}">Path=Root.Element[Planet].Element[Orbit]</TextBlock>
+						<TextBlock Text="{Binding Path=Root.Element[Planet].Element[Orbit]}" />
+					</StackPanel>
+					<StackPanel Name="XMLPanel2">
+						<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XPath"/>
+						<TextBlock Style="{StaticResource PathSyntaxStyle}">XPath=/SolarSystemPlanets/Planet[1]/Orbit, Path=OuterXml</TextBlock>
+						<TextBlock Text="{Binding XPath=/SolarSystemPlanets/Planet[1]/Orbit, Path=OuterXml}" />
+					</StackPanel>
+					<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq in code"/>
+					<TextBlock Style="{StaticResource PathSyntaxStyle}" Name="xLinqInCode2" />
+				</StackPanel>
+			</TabItem>
+			<TabItem Header="List of Planet Names">
+				<StackPanel Style="{StaticResource MainStackPanel}">
+					<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq in XAML"/>
+					<TextBlock Style="{StaticResource PathSyntaxStyle}">ListBox: Path=Root.Elements</TextBlock>
+					<TextBlock Style="{StaticResource PathSyntaxStyle}">DataTemplate: Path=Attribute[Name].Value</TextBlock>
+
+					<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XPath"/>
+					<TextBlock Style="{StaticResource PathSyntaxStyle}">ListBox: XPath=/SolarSystemPlanets/Planet</TextBlock>
+					<TextBlock Style="{StaticResource PathSyntaxStyle}">DataTemplate: XPath=@Name</TextBlock>
+
+					<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq in code"/>
+					<TextBlock Style="{StaticResource PathSyntaxStyle}" Name="xLinqInCode3" />
+
+					<StackPanel Orientation="Horizontal">
+						<StackPanel Name="XLinqPanel3">
+							<StackPanel.Resources>
+								<DataTemplate x:Key="PlanetTemplate">
+									<TextBlock Text="{Binding Path=Attribute[Name].Value}" />
+								</DataTemplate>
+							</StackPanel.Resources>
+							<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq"/>
+							<ListBox ItemsSource="{Binding Path=Root.Elements}" ItemTemplate="{StaticResource PlanetTemplate}" Width="200" HorizontalAlignment="Left"/>
+						</StackPanel>
+						<StackPanel Name="XMLPanel3" Margin="10,0,0,0">
+							<StackPanel.Resources>
+								<DataTemplate x:Key="PlanetTemplate">
+									<TextBlock Text="{Binding XPath=@Name}" />
+								</DataTemplate>
+							</StackPanel.Resources>
+							<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XPath"/>
+							<ListBox ItemsSource="{Binding XPath=/SolarSystemPlanets/Planet}" ItemTemplate="{StaticResource PlanetTemplate}" Width="200" HorizontalAlignment="Left"/>					
+						</StackPanel>
+					</StackPanel>
+				</StackPanel>
+			</TabItem>
+			<TabItem Header="List of Planet Diameters">
+				<StackPanel Style="{StaticResource MainStackPanel}">
+					<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq in XAML"/>
+					<TextBlock Style="{StaticResource PathSyntaxStyle}">ListBox: Path=Root.Descendants[Diameter]</TextBlock>
+					<TextBlock Style="{StaticResource PathSyntaxStyle}">DisplayMemberPath: Value</TextBlock>
+
+					<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XPath"/>
+					<TextBlock Style="{StaticResource PathSyntaxStyle}">ListBox: XPath=/SolarSystemPlanets/*/Diameter</TextBlock>
+
+					<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq in code"/>
+					<TextBlock Style="{StaticResource PathSyntaxStyle}" Name="xLinqInCode4" />
+
+					<StackPanel Orientation="Horizontal">
+						<StackPanel Name="XLinqPanel4">
+							<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq"/>
+							<ListBox ItemsSource="{Binding Path=Root.Descendants[Diameter]}" DisplayMemberPath="Value" Width="200" HorizontalAlignment="Left"/>
+						</StackPanel>
+						<StackPanel Name="XMLPanel4" Margin="10,0,0,0">
+							<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XPath"/>
+							<ListBox ItemsSource="{Binding XPath=/SolarSystemPlanets/*/Diameter}" Width="200" HorizontalAlignment="Left"/>
+						</StackPanel>
+					</StackPanel>
+				</StackPanel>
+			</TabItem>
+			<TabItem Header="Non-formatted XML">
+				<StackPanel Style="{StaticResource MainStackPanel}">
+					<StackPanel Name="XLinqPanel5">
+						<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq in XAML"/>
+						<TextBlock Style="{StaticResource PathSyntaxStyle}">Path=Root.Element[Planet].Xml</TextBlock>
+						<TextBlock Text="{Binding Path=Root.Element[Planet].Xml}" TextWrapping="Wrap" Width="500" HorizontalAlignment="Left"/>
+					</StackPanel>
+					<StackPanel Name="XMLPanel5">
+						<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XPath"/>
+						<TextBlock Style="{StaticResource PathSyntaxStyle}">XPath=/SolarSystemPlanets/Planet[1], Path=OuterXml</TextBlock>
+						<TextBlock Text="{Binding XPath=/SolarSystemPlanets/Planet[1], Path=OuterXml}" TextWrapping="Wrap" Width="500" HorizontalAlignment="Left"/>
+					</StackPanel>
+					<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq in code"/>
+					<TextBlock Style="{StaticResource PathSyntaxStyle}" Name="xLinqInCode5" />
+				</StackPanel>
+			</TabItem>
+			<TabItem Header="HasAttributes of Mass">
+				<StackPanel Style="{StaticResource MainStackPanel}">
+					<StackPanel Name="XLinqPanel6">
+						<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq in XAML"/>
+						<TextBlock Style="{StaticResource PathSyntaxStyle}">Path=Root.Element[Planet].Element[Mass].HasAttributes</TextBlock>
+						<TextBlock Text="{Binding Path=Root.Element[Planet].Element[Mass].HasAttributes}" />
+					</StackPanel>
+					<StackPanel Name="XMLPanel6">
+						<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XPath"/>
+						<TextBlock Style="{StaticResource PathSyntaxStyle}">XPath=/SolarSystemPlanets/Planet[1]/Mass, Path=HasAttributes</TextBlock>
+						<TextBlock Text="{Binding XPath=/SolarSystemPlanets/Planet[1]/Mass, Path=HasAttributes}" />
+					</StackPanel>
+					<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq in code"/>
+					<TextBlock Style="{StaticResource PathSyntaxStyle}" Name="xLinqInCode6" />
+				</StackPanel>
+			</TabItem>
+			<TabItem Header="First Planet's Details">
+				<StackPanel Style="{StaticResource MainStackPanel}">
+					<StackPanel Name="XLinqPanel7">
+						<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq in XAML"/>
+						<TextBlock Style="{StaticResource PathSyntaxStyle}">Path=Root.Element[Planet].Element[{http://myNamespace}Details].Value</TextBlock>
+						<TextBlock Text="{Binding Path=Root.Element[Planet].Element[{http://myNamespace}Details].Value}" />
+					</StackPanel>
+					<StackPanel Name="XMLPanel7">
+						<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XPath"/>
+						<TextBlock Style="{StaticResource PathSyntaxStyle}">XPath=/SolarSystemPlanets/Planet[1]/mn:Details</TextBlock>
+						<TextBlock Text="{Binding XPath=/SolarSystemPlanets/Planet[1]/mn:Details}" />
+					</StackPanel>
+					<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq in code"/>
+					<TextBlock Style="{StaticResource PathSyntaxStyle}" Name="xLinqInCode7" />
+				</StackPanel>
+			</TabItem>
+			<TabItem Header="First Planet's info">
+				<StackPanel Style="{StaticResource MainStackPanel}">
+					<StackPanel Name="XLinqPanel8">
+						<StackPanel.Resources>
+							<DataTemplate DataType="Orbit">
+								<StackPanel Orientation="Horizontal">
+									<TextBlock FontWeight="Bold" Text="Orbit:  " />
+								<TextBlock Text="{Binding Path=Value}" />
+							</StackPanel>
+							</DataTemplate>
+
+							<DataTemplate DataType="Diameter">
+								<StackPanel Orientation="Horizontal">
+									<TextBlock FontWeight="Bold" Text="Diameter:  " />
+								<TextBlock Text="{Binding Path=Value}" />
+							</StackPanel>
+							</DataTemplate>
+
+							<DataTemplate DataType="Mass">
+								<StackPanel Orientation="Horizontal">
+									<TextBlock FontWeight="Bold" Text="Mass:  " />
+								<TextBlock Text="{Binding Path=Value}" />
+							</StackPanel>
+							</DataTemplate>
+
+							<DataTemplate DataType="{}{http://myNamespace}Details">
+								<StackPanel Orientation="Horizontal">
+									<TextBlock FontWeight="Bold" Text="Details:  " />
+								<TextBlock Text="{Binding Path=Value}" />
+							</StackPanel>
+							</DataTemplate>
+						</StackPanel.Resources>
+						<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq in XAML"/>
+						<TextBlock Style="{StaticResource PathSyntaxStyle}">ItemsControl: Path=Root.Element[Planet].Elements</TextBlock>
+						<TextBlock Style="{StaticResource PathSyntaxStyle}">DataTemplate: Path=Value</TextBlock>
+						<ItemsControl ItemsSource="{Binding Path=Root.Element[Planet].Elements}" HorizontalAlignment="Left" />
+					</StackPanel>
+					<StackPanel Name="XMLPanel8">
+						<StackPanel.Resources>
+							<DataTemplate DataType="Orbit">
+								<StackPanel Orientation="Horizontal">
+									<TextBlock FontWeight="Bold" Text="Orbit:  " />
+								<TextBlock Text="{Binding XPath=.}" />
+							</StackPanel>
+							</DataTemplate>
+
+							<DataTemplate DataType="Diameter">
+								<StackPanel Orientation="Horizontal">
+									<TextBlock FontWeight="Bold" Text="Diameter:  " />
+								<TextBlock Text="{Binding XPath=.}" />
+							</StackPanel>
+							</DataTemplate>
+
+							<DataTemplate DataType="Mass">
+								<StackPanel Orientation="Horizontal">
+									<TextBlock FontWeight="Bold" Text="Mass:  " />
+								<TextBlock Text="{Binding XPath=.}" />
+							</StackPanel>
+							</DataTemplate>
+
+							<DataTemplate DataType="mn:Details">
+								<StackPanel Orientation="Horizontal">
+									<TextBlock FontWeight="Bold" Text="Details:  " />
+								<TextBlock Text="{Binding XPath=.}" />
+							</StackPanel>
+							</DataTemplate>
+						</StackPanel.Resources>
+						<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XPath"/>
+						<TextBlock Style="{StaticResource PathSyntaxStyle}">ItemsControl: XPath=/SolarSystemPlanets/Planet[1]/*</TextBlock>
+						<TextBlock Style="{StaticResource PathSyntaxStyle}">DataTemplate: XPath=.</TextBlock>
+						<ItemsControl ItemsSource="{Binding XPath=/SolarSystemPlanets/Planet[1]/*}" HorizontalAlignment="Left" />
+					</StackPanel>
+					<TextBlock Style="{StaticResource SmallTitleStyle}" Text="XLinq in code"/>
+					<TextBlock Style="{StaticResource PathSyntaxStyle}" Name="xLinqInCode8" />
+				</StackPanel>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</Window>

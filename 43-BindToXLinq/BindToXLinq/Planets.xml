@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SolarSystemPlanets>
+  <Planet Name="Mercury">
+    <Orbit>57,910,000 km (0.38 AU)</Orbit>
+    <Diameter>4,880 km</Diameter>
+    <Mass>3.30e23 kg</Mass>
+    <Details xmlns="http://myNamespace">The small and rocky planet Mercury is the closest planet to the Sun.</Details>
+  </Planet>
+  <Planet Name="Venus">
+    <Orbit>108,200,000 km (0.72 AU)</Orbit>
+    <Diameter>12,103.6 km</Diameter>
+    <Mass>4.869e24 kg</Mass>
+    <Details>At first glance, if Earth had a twin, it would be Venus.</Details>
+  </Planet>
+  <Planet Name="Earth">
+    <Orbit>149,600,000 km (1.00 AU)</Orbit>
+    <Diameter>12,756.3 km</Diameter>
+    <Mass>5.972e24 kg</Mass>
+    <Details>Earth, our home planet, is the only planet in our solar system known to harbor life.</Details>
+  </Planet>
+  <Planet Name="Mars">
+    <Orbit>227,940,000 km (1.52 AU)</Orbit>
+    <Diameter>6,794 km</Diameter>
+    <Mass>6.4219e23 kg</Mass>
+    <Details>The red planet Mars has inspired wild flights of imagination over the centuries.</Details>
+  </Planet>
+  <Planet Name="Jupiter">
+    <Orbit>778,330,000 km (5.20 AU)</Orbit>
+    <Diameter>142,984 km (equatorial)</Diameter>
+    <Mass>1.900e27 kg</Mass>
+    <Details>With its numerous moons and several rings, the Jupiter system is a "mini-solar system."</Details>
+  </Planet>
+  <Planet Name="Saturn">
+    <Orbit>1,429,400,000 km (9.54 AU)</Orbit>
+    <Diameter>120,536 km (equatorial)</Diameter>
+    <Mass>5.68e26 kg</Mass>
+    <Details>Saturn is the most distant of the five planets known to ancient stargazers.</Details>
+  </Planet>
+  <Planet Name="Uranus">
+    <Orbit>2,870,990,000 km (19.218 AU)</Orbit>
+    <Diameter>51,118 km (equatorial)</Diameter>
+    <Mass>8.683e25 kg</Mass>
+    <Details>Uranus gets its blue-green color from methane gas above the deeper cloud layers.</Details>
+  </Planet>
+  <Planet Name="Neptune">
+    <Orbit>4,504,000,000 km (30.06 AU)</Orbit>
+    <Diameter>49,532 km (equatorial)</Diameter>
+    <Mass>1.0247e26 kg</Mass>
+    <Details>Neptune was the first planet located through mathematical predictions.</Details>
+  </Planet>
+  <Planet Name="Pluto">
+    <Orbit>5,913,520,000 km (39.5 AU)</Orbit>
+    <Diameter>2274 km</Diameter>
+    <Mass>1.27e22 kg</Mass>
+    <Details>Long considered to be the smallest, coldest, and most distant planet from the Sun.</Details>
+  </Planet>
+</SolarSystemPlanets>
