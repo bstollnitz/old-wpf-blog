@@ -1,0 +1,45 @@
+﻿<?Mapping XmlNamespace="local" ClrNamespace="TemplatingItems" ?>
+<Window x:Class="TemplatingItems.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+    Title="TemplatingItems"
+    xmlns:local="local"
+    SizeToContent="WidthAndHeight"
+    >
+    <Window.Resources>
+        <local:Places x:Key="places" />
+        <local:GreekGodsAndHeros x:Key="godsAndHeros" />
+        <local:PlaceTemplateSelector WashingtonTemplate="{StaticResource washingtonTemplate}" NotWashingtonTemplate="{StaticResource notWashingtonTemplate}" x:Key="placeTemplateSelector" />
+
+        <DataTemplate x:Key="washingtonTemplate">
+            <Border Background="Lavender">
+                <TextBlock Text="{Binding Path=Name}" Foreground="CornFlowerBlue" FontWeight="Bold"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="notWashingtonTemplate">
+            <TextBlock Text="{Binding Path=Name}" Foreground="DarkSeaGreen" />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type local:GreekGod}">
+            <Grid>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <RowDefinition Height="Auto"/>
+                <TextBlock Text="{Binding Path=GodName}" Grid.Column="0" Grid.Row="0" Foreground="Brown"/>
+                <TextBlock Text="{Binding Path=GodDescription}" Grid.Column="1" Grid.Row="0" Foreground="Brown"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type local:GreekHero}">
+            <TextBlock Text="{Binding Path=HeroName}" FontWeight="Bold" Foreground="Red"/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Border Margin="30" BorderBrush="Blue" BorderThickness="2" >
+        <StackPanel HorizontalAlignment="Left">
+            <ListBox ItemsSource="{Binding Source={StaticResource places}}" ItemTemplateSelector="{StaticResource placeTemplateSelector}" Margin="10"/>
+            <ListBox ItemsSource="{Binding Source={StaticResource godsAndHeros}}" Margin="10"/>
+        </StackPanel>
+    </Border>
+</Window>
