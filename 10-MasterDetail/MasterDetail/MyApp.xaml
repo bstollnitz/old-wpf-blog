@@ -1,0 +1,9 @@
+﻿<Application x:Class="MasterDetail.MyApp"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+    Startup="AppStartup"
+    >
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

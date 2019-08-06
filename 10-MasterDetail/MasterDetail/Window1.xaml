@@ -1,0 +1,106 @@
+﻿<?Mapping XmlNamespace="local" ClrNamespace="MasterDetail" ?>
+<Window x:Class="MasterDetail.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+    Title="MasterDetail"
+	SizeToContent="WidthAndHeight"
+	xmlns:local="local"
+    >
+	<Window.Resources>
+		<XmlDataProvider XPath="/SolarSystemPlanets/Planet" x:Key="planets">
+			<SolarSystemPlanets xmlns="">
+				<Planet Name="Mercury">
+					<Orbit>57,910,000 km (0.38 AU)</Orbit>
+					<Diameter>4,880 km</Diameter>
+					<Mass>3.30e23 kg</Mass>
+					<Image>merglobe.gif</Image>
+				</Planet>				
+				<Planet Name="Venus">
+					<Orbit>108,200,000 km (0.72 AU)</Orbit>
+					<Diameter>12,103.6 km</Diameter>
+					<Mass>4.869e24 kg</Mass>
+					<Image>venglobe.gif</Image>
+				</Planet>
+				<Planet Name="Earth">
+					<Orbit>149,600,000 km (1.00 AU)</Orbit>
+					<Diameter>12,756.3 km</Diameter>
+					<Mass>5.972e24 kg</Mass>
+					<Image>earglobe.gif</Image>
+				</Planet>
+				<Planet Name="Mars">
+					<Orbit>227,940,000 km (1.52 AU)</Orbit>
+					<Diameter>6,794 km</Diameter>
+					<Mass>6.4219e23 kg</Mass>
+					<Image>marglobe.gif</Image>
+				</Planet>
+				<Planet Name="Jupiter">
+					<Orbit>778,330,000 km (5.20 AU)</Orbit>
+					<Diameter>142,984 km (equatorial)</Diameter>
+					<Mass>1.900e27 kg</Mass>
+					<Image>jupglobe.gif</Image>
+				</Planet>
+				<Planet Name="Saturn">
+					<Orbit>1,429,400,000 km (9.54 AU)</Orbit>
+					<Diameter>120,536 km (equatorial)</Diameter>
+					<Mass>5.68e26 kg</Mass>
+					<Image>2moons_2.gif</Image>
+				</Planet>
+				<Planet Name="Uranus">
+					<Orbit>2,870,990,000 km (19.218 AU)</Orbit>
+					<Diameter>51,118 km (equatorial)</Diameter>
+					<Mass>8.683e25 kg</Mass>
+					<Image>uraglobe.gif</Image>
+				</Planet>
+				<Planet Name="Neptune">
+					<Orbit>4,504,000,000 km (30.06 AU)</Orbit>
+					<Diameter>49,532 km (equatorial)</Diameter>
+					<Mass>1.0247e26 kg</Mass>
+					<Image>nepglobe.gif</Image>
+				</Planet>
+				<Planet Name="Pluto">
+					<Orbit>5,913,520,000 km (39.5 AU)</Orbit>
+					<Diameter>2274 km</Diameter>
+					<Mass>1.27e22 kg</Mass>
+					<Image>plutoch_2.gif</Image>
+				</Planet>
+			</SolarSystemPlanets>
+		</XmlDataProvider>
+
+		<CollectionViewSource Source="{Binding Source={StaticResource planets}}" x:Key="cvs" />
+
+		<local:StringToImageSourceConverter x:Key="stringToImageSource" />
+		
+		<DataTemplate x:Key="detailTemplate">
+			<Border BorderBrush="Black" BorderThickness="1" Padding="5" >
+				<Grid Width="200" Height="200">
+					<ColumnDefinition />
+					<RowDefinition />
+					<Image Source="{Binding XPath=Image, Converter={StaticResource stringToImageSource}}" />
+					<StackPanel Background="#A0FFFFFF" VerticalAlignment="Bottom" >
+						<StackPanel Orientation="Horizontal" Margin="5,5,5,0">
+							<TextBlock Text="Orbit: " FontWeight="Bold" />
+							<TextBlock Text="{Binding XPath=Orbit}" />
+						</StackPanel>
+						<StackPanel Orientation="Horizontal" Margin="5,0,5,0">
+							<TextBlock Text="Diameter: " FontWeight="Bold"/>
+							<TextBlock Text="{Binding XPath=Diameter}" />
+						</StackPanel>
+						<StackPanel Orientation="Horizontal" Margin="5,0,5,5">
+							<TextBlock Text="Mass: " FontWeight="Bold"/>
+							<TextBlock Text="{Binding XPath=Mass}" />
+						</StackPanel>
+					</StackPanel>
+				</Grid>
+			</Border>
+		</DataTemplate>
+	</Window.Resources>
+
+	<Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10">
+		<StackPanel Orientation="Horizontal" >
+			<!-- master -->
+			<ListBox ItemsSource="{Binding Source={StaticResource cvs}}" DisplayMemberPath="@Name" Padding="5" Margin="0,0,5,0"/>
+			<!-- detail -->
+			<ContentControl ContentTemplate="{StaticResource detailTemplate}" Content="{Binding Source={StaticResource cvs}}"/>
+		</StackPanel>
+	</Border>
+</Window>
