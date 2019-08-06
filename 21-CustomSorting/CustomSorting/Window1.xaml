@@ -1,0 +1,40 @@
+﻿<Window x:Class="CustomSorting.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="CustomSorting" 
+	SizeToContent="WidthAndHeight"
+	xmlns:local="clr-namespace:CustomSorting"
+	xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+    >
+	<!-- Ascending order will result in the following order: 10 - 19, 1, 20, 21, 2 - 9 -->
+	<!--<Window.Resources>
+		<local:BlogPosts x:Key="source"/>
+
+		<CollectionViewSource Source="{StaticResource source}" x:Key="cvs">
+			<CollectionViewSource.SortDescriptions>
+				<scm:SortDescription Direction="Ascending"/>
+			</CollectionViewSource.SortDescriptions>
+		</CollectionViewSource>
+	</Window.Resources>
+
+	<StackPanel>
+		<Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10">
+			<ListBox ItemsSource="{Binding Source={StaticResource cvs}}"/>
+		</Border>
+	</StackPanel>-->
+
+	<Window.Resources>
+		<local:BlogPosts x:Key="posts"/>
+
+		<Style TargetType="{x:Type ListBoxItem}" x:Key="containerStyle">
+			<Setter Property="Margin" Value="0,5,0,0" />
+		</Style>
+	</Window.Resources>
+	<Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10">
+		<StackPanel>
+			<ListBox ItemsSource="{StaticResource posts}" ItemContainerStyle="{StaticResource containerStyle}" Name="lb"/>
+			<Button Click="Sort" Content="Sort" Margin="0,10,0,0"/>
+		</StackPanel>
+	</Border>
+</Window>
+	
