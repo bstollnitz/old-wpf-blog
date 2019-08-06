@@ -1,0 +1,35 @@
+﻿<Window x:Class="WPFCollectionViewSource.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Window1" SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="TitleStyle">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="0,0,0,5" />
+        </Style>
+        
+        <CollectionViewSource Source="{Binding}" x:Key="cvs1"/>
+        <CollectionViewSource Source="{Binding Source={StaticResource cvs1}, Path=Lifts}" x:Key="cvs2"/>
+        <CollectionViewSource Source="{Binding Source={StaticResource cvs2}, Path=Runs}" x:Key="cvs3"/>
+    </Window.Resources>
+    <Grid Margin="30" Width="500" Height="130">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <TextBlock Text="Mountains" Style="{StaticResource TitleStyle}"/>
+        <TextBlock Text="Lifts" Style="{StaticResource TitleStyle}" Grid.Column="1"/>
+        <TextBlock Text="Runs" Style="{StaticResource TitleStyle}" Grid.Column="2"/>
+        
+        <ListBox ItemsSource="{Binding Source={StaticResource cvs1}}" DisplayMemberPath="Name" Grid.Row="1"/>
+        <ListBox ItemsSource="{Binding Source={StaticResource cvs2}}" DisplayMemberPath="Name" Grid.Column="1" Grid.Row="1"/>
+        <ListBox ItemsSource="{Binding Source={StaticResource cvs3}}" Grid.Column="2" Grid.Row="1"/>
+    </Grid>
+</Window>
