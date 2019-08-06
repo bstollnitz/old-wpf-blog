@@ -1,0 +1,34 @@
+﻿<?Mapping XmlNamespace="local" ClrNamespace="GroupingTreeView"?>
+<Window x:Class="GroupingTreeView.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+    Title="GroupingTreeView"
+    xmlns:local="local"
+    SizeToContent="WidthAndHeight"
+    >
+    <Window.Resources>
+        <local:Animals x:Key="animals"/>
+
+        <CollectionViewSource x:Key="cvs" Source="{Binding Source={StaticResource animals}, Path=AnimalList}">
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="Category"/>
+            </CollectionViewSource.GroupDescriptions>
+        </CollectionViewSource>
+
+        <HierarchicalDataTemplate x:Key="categoryTemplate"
+            ItemsSource="{Binding Path=Items}" 
+            ItemTemplate="{StaticResource animalTemplate}">
+            <TextBlock Text="{Binding Path=Name}" FontWeight="Bold"/>
+        </HierarchicalDataTemplate>
+
+        <DataTemplate x:Key="animalTemplate">
+            <TextBlock Text="{Binding Path=Name}"/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10">
+        <TreeView ItemsSource="{Binding Source={StaticResource cvs}, Path=Groups}" 
+            ItemTemplate="{StaticResource categoryTemplate}" Width="200">
+        </TreeView>
+    </Border>
+</Window>
