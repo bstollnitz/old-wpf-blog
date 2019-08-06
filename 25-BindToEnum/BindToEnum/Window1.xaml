@@ -1,0 +1,23 @@
+﻿<Window x:Class="BindToEnum.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="BindToEnum" 
+    xmlns:local="clr-namespace:BindToEnum"
+	xmlns:sys="clr-namespace:System;assembly=mscorlib"
+	SizeToContent="WidthAndHeight"
+	>
+	<Window.Resources>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="odp">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:TShirtSizes"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+
+	<Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10">
+		<StackPanel>
+			<Label>Select the size of your TechEd T-Shirt:</Label>
+			<ComboBox ItemsSource="{Binding Source={StaticResource odp}}" IsSynchronizedWithCurrentItem="true"/>
+		</StackPanel>
+	</Border>
+</Window>
