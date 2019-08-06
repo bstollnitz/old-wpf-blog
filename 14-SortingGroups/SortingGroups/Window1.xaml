@@ -1,0 +1,42 @@
+﻿<?Mapping XmlNamespace="scm" ClrNamespace="System.ComponentModel" Assembly="WindowsBase"?>
+<?Mapping XmlNamespace="local" ClrNamespace="SortingGroups"?>
+<Window x:Class="SortingGroups.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+    Title="SortingGroups"
+    xmlns:local="local"
+    xmlns:scm="scm" 
+    SizeToContent="WidthAndHeight"
+    >
+    <Window.Resources>
+        <local:Animals x:Key="animals"/>
+
+        <CollectionViewSource x:Key="cvs" Source="{Binding Source={StaticResource animals}, Path=AnimalList}">
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="Category"/>
+            </CollectionViewSource.GroupDescriptions>
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="Category" />
+                <scm:SortDescription PropertyName="Name" />
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+
+        <DataTemplate x:Key="categoryTemplate">
+            <TextBlock Text="{Binding Path=Name}" FontWeight="Bold" Foreground="ForestGreen" Margin="0,5,0,0"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="animalTemplate">
+            <TextBlock Text="{Binding Path=Name}" Foreground="MediumSeaGreen"/>
+        </DataTemplate>
+
+    </Window.Resources>
+
+    <Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10">
+        <ItemsControl ItemsSource="{Binding Source={StaticResource cvs}}" 
+            Width="200" ItemTemplate="{StaticResource animalTemplate}">
+            <ItemsControl.GroupStyle>
+                <GroupStyle HeaderTemplate="{StaticResource categoryTemplate}" />
+            </ItemsControl.GroupStyle>
+        </ItemsControl>
+    </Border>
+</Window>

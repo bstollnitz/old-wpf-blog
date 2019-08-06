@@ -1,0 +1,9 @@
+﻿<Application x:Class="SortingGroups.MyApp"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+    StartupUri="Window1.xaml"
+    >
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
