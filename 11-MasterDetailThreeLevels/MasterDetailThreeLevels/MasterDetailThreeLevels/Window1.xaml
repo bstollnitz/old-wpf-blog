@@ -1,0 +1,40 @@
+﻿<?Mapping XmlNamespace="local" ClrNamespace="MasterDetailThreeLevels" ?>
+<Window x:Class="MasterDetailThreeLevels.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+	xmlns:local="local" 
+    Title="MasterDetailThreeLevels"
+	SizeToContent="WidthAndHeight"
+    >
+
+	<Window.Resources>
+		<local:Mountains x:Key="mountains" />
+
+		<CollectionViewSource Source="{StaticResource mountains}" x:Key="cvs" />
+		<CollectionViewSource Source="{Binding Source={StaticResource cvs}, Path=Lifts}" x:Key="cvs2"/>
+	</Window.Resources>
+
+	<Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10">
+		<StackPanel Width="200" Height="140">
+			<!-- The second and third list boxes do not sync -->
+			<!--<ListBox ItemsSource="{Binding Source={StaticResource cvs}}" DisplayMemberPath="Name" Name="lb1" />
+			<ListBox ItemsSource="{Binding Source={StaticResource cvs}, Path=Lifts}" DisplayMemberPath="Name" Name="lb2" />
+			<ListBox ItemsSource="{Binding Source={StaticResource cvs}, Path=Lifts/Runs}" Name="lb3" />-->
+
+			<!-- Solution 1 -->
+			<ListBox ItemsSource="{Binding Source={StaticResource cvs}}" DisplayMemberPath="Name" Name="lb1" />
+			<ListBox ItemsSource="{Binding Source={StaticResource cvs2}}" DisplayMemberPath="Name" Name="lb2" />
+			<ListBox ItemsSource="{Binding Source={StaticResource cvs2}, Path=Runs}" Name="lb3" />
+
+			<!-- Solution 2 -->
+			<!--<ListBox ItemsSource="{Binding Source={StaticResource mountains}}" DisplayMemberPath="Name" IsSynchronizedWithCurrentItem="True" Name="lb1" />
+			<ListBox ItemsSource="{Binding Source={StaticResource mountains}, Path=Lifts}" DisplayMemberPath="Name" IsSynchronizedWithCurrentItem="True" Name="lb2" />
+			<ListBox ItemsSource="{Binding Source={StaticResource mountains}, Path=Lifts/Runs}" IsSynchronizedWithCurrentItem="True" Name="lb3" />-->
+
+			<!-- Solution 3 -->
+			<!--<ListBox ItemsSource="{Binding Source={StaticResource mountains}}" DisplayMemberPath="Name" Name="lb1" IsSynchronizedWithCurrentItem="True"/>
+			<ListBox DataContext="{Binding ElementName=lb1, Path=Items}" ItemsSource="{Binding Path=Lifts}" DisplayMemberPath="Name" Name="lb2" IsSynchronizedWithCurrentItem="True"/>
+			<ListBox DataContext="{Binding ElementName=lb2, Path=Items}" ItemsSource="{Binding Path=Runs}" Name="lb3" IsSynchronizedWithCurrentItem="True"/>-->
+		</StackPanel>
+	</Border>
+</Window>

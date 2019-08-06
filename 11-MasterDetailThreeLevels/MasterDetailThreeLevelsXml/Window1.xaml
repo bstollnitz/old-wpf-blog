@@ -1,0 +1,88 @@
+﻿<?Mapping ClrNamespace="MasterDetailThreeLevelsXml" XmlNamespace="Local"?>
+<Window x:Class="MasterDetailThreeLevelsXml.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+    Title="MasterDetailThreeLevelsXml"
+    SizeToContent="WidthAndHeight"
+    xmlns:local="Local"
+    >
+  <Window.Resources>
+    <XmlDataProvider XPath="Mountains/Mountain" x:Key="mountains">
+      <Mountains xmlns="">
+        <Mountain Name="Whistler">
+          <Lift Name="Big Red Express">
+            <Run>Headwall</Run>
+            <Run>Fisheye</Run>
+            <Run>Jimmy's Joker</Run>
+          </Lift>
+          <Lift Name="Garbanzo Express">
+            <Run>Raven</Run>
+          </Lift>
+          <Lift Name="Orange chair">
+            <Run>Orange peel</Run>
+            <Run>Banana peel</Run>
+            <Run>Upper Dave Murray Downhill</Run>
+          </Lift>
+        </Mountain>
+        <Mountain Name="Stevens Pass">
+          <Lift Name="Tye Mill">
+            <Run>Roller coaster</Run>
+            <Run>Skid road</Run>
+            <Run>Crest trail</Run>
+          </Lift>
+          <Lift Name="Jupiter chair">
+            <Run>Corona bowl</Run>
+            <Run>Lower gemini</Run>
+          </Lift>
+          <Lift Name="Southern cross chair">
+            <Run>Orion</Run>
+            <Run>Aquarius face</Run>
+          </Lift>
+        </Mountain>
+        <Mountain Name="Crystal Mountain">
+          <Lift Name="Rainier Express">
+            <Run>Iceberg ridge</Run>
+            <Run>Pro course</Run>
+            <Run>Lucky shot</Run>
+          </Lift>
+          <Lift Name="Green Valley">
+            <Run>Green back</Run>
+            <Run>Northway ridge</Run>
+          </Lift>
+        </Mountain>
+      </Mountains>
+    </XmlDataProvider>
+
+    <CollectionViewSource Source="{StaticResource mountains}" x:Key="cvs" />
+    <CollectionViewSource Source="{Binding Source={StaticResource cvs}, XPath=Lift}" x:Key="cvs2"/>
+    <local:FooConverter x:Key="FooConverter" />
+  </Window.Resources>
+
+  <Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10">
+    <StackPanel Width="200" Height="140">
+      
+      <!-- The second and third list boxes do not sync -->
+      <!--<ListBox ItemsSource="{Binding Source={StaticResource cvs}}" DisplayMemberPath="@Name" Name="lb1" />
+			<ListBox ItemsSource="{Binding Source={StaticResource cvs}, Path=/, Converter={StaticResource FooConverter}}" DisplayMemberPath="@Name" Name="lb2" />-->
+			<!--<ListBox ItemsSource="{Binding Source={StaticResource cvs}, XPath=Lift/Run}" Name="lb3" />-->
+
+      <!-- Solution 1 -->
+      <!--<ListBox ItemsSource="{Binding Source={StaticResource cvs}}" DisplayMemberPath="@Name" Name="lb1" />
+			<ListBox ItemsSource="{Binding Source={StaticResource cvs2}}" DisplayMemberPath="@Name" Name="lb2" />
+			<ListBox ItemsSource="{Binding Source={StaticResource cvs2}, XPath=Run}" IsSynchronizedWithCurrentItem="True" Name="lb3" />-->
+
+      <!-- Solution 2 -->
+      <ListBox ItemsSource="{Binding Source={StaticResource mountains}}" DisplayMemberPath="@Name" IsSynchronizedWithCurrentItem="True" Name="lb1" />
+      <ListBox ItemsSource="{Binding Source={StaticResource mountains}, XPath=Lift}" DisplayMemberPath="@Name" IsSynchronizedWithCurrentItem="True" Name="lb2" />
+      <ListBox ItemsSource="{Binding Source={StaticResource mountains}, XPath=Lift/Run}" IsSynchronizedWithCurrentItem="True" Name="lb3" />
+
+      <!-- Solution 3 -->
+      <!-- This is the only one that works -->
+      <!--<ListBox ItemsSource="{Binding Source={StaticResource mountains}}" DisplayMemberPath="@Name" Name="lb1" IsSynchronizedWithCurrentItem="True"/>
+			<ListBox DataContext="{Binding ElementName=lb1, Path=Items/}" ItemsSource="{Binding XPath=Lift}" DisplayMemberPath="@Name" Name="lb2" IsSynchronizedWithCurrentItem="True"/>
+			<ListBox DataContext="{Binding ElementName=lb2, Path=Items/}" ItemsSource="{Binding XPath=Run}" Name="lb3" IsSynchronizedWithCurrentItem="True"/>-->
+
+    </StackPanel>
+  </Border>
+
+</Window>
