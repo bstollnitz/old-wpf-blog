@@ -1,0 +1,60 @@
+﻿<Window x:Class="ObjectDataProviderSample.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="ObjectDataProviderSample" Height="300" Width="300"
+	xmlns:local="clr-namespace:ObjectDataProviderSample"
+	xmlns:system="clr-namespace:System;assembly=mscorlib"
+	SizeToContent="WidthAndHeight"
+    >
+	<Window.Resources>
+		<ObjectDataProvider ObjectType="{x:Type local:MySource}" x:Key="odp1">
+			<ObjectDataProvider.ConstructorParameters>
+				<system:String>Jupiter</system:String>
+			</ObjectDataProvider.ConstructorParameters>
+		</ObjectDataProvider>
+
+		<ObjectDataProvider ObjectInstance="{StaticResource odp1}" MethodName="WeightOnPlanet" x:Key="odp2">
+			<ObjectDataProvider.MethodParameters>
+				<system:Double>95</system:Double>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+
+		<local:DoubleToString x:Key="doubleToString" />
+
+		<Style x:Key="tbStyle" TargetType="{x:Type TextBox}">
+			<Style.Triggers>
+				<Trigger Property="Validation.HasError" Value="true">
+					<Setter Property="ToolTip"
+					  Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+	</Window.Resources>
+	<Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="150"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Label Content="{Binding Source={StaticResource odp1}, Path=Planet.Name}" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold" Foreground="IndianRed" FontSize="13" Margin="5,5,5,15"/>
+			<Label Grid.Row="1" HorizontalAlignment="Right">Enter your weight on Earth:</Label>
+			<TextBox Grid.Row="1" Grid.Column="1" Name="tb" Style="{StaticResource tbStyle}">
+				<TextBox.Text>
+					<Binding Source="{StaticResource odp2}" Path="MethodParameters[0]" BindsDirectlyToSource="true" UpdateSourceTrigger="PropertyChanged" Converter="{StaticResource doubleToString}">
+						<Binding.ValidationRules>
+							<local:WeightValidationRule />
+						</Binding.ValidationRules>
+					</Binding>
+				</TextBox.Text>
+			</TextBox>
+			<Label Grid.Row="2" HorizontalAlignment="Right">Your weight on Jupiter:</Label>
+			<Label Content="{Binding Source={StaticResource odp2}}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+		</Grid>
+	</Border>
+</Window>
