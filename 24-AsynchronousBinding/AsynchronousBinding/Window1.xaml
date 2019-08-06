@@ -1,0 +1,34 @@
+﻿<Window x:Class="AsynchronousBinding.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="AsynchronousBinding" 
+    xmlns:local="clr-namespace:AsynchronousBinding"
+	SizeToContent="WidthAndHeight"
+	>
+	<Window.Triggers>
+		<EventTrigger RoutedEvent="Window.Loaded">
+			<BeginStoryboard>
+				<Storyboard>
+					<DoubleAnimation
+					  Storyboard.TargetName="animatedRect" 
+					  Storyboard.TargetProperty="Width"
+					  From="20" To="200" Duration="0:0:2" 
+					  AutoReverse="True" RepeatBehavior="Forever" />
+				</Storyboard>
+			</BeginStoryboard>
+		</EventTrigger>
+	</Window.Triggers>
+	<Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10">
+		<StackPanel>
+			<Rectangle Name="animatedRect" Width="20" Height="20" Fill="IndianRed" Margin="10"/>
+			<Button Content="Bind to slow data source (synchronous)" Click="SlowDataSourceSync" />
+			<TextBlock Name="tbSlowDSSync" Margin="5"/>
+			<Button Content="Bind to slow data source (asynchronous)" Click="SlowDataSourceAsync" />
+			<TextBlock Name="tbSlowDSAsync" Margin="5"/>
+			<Button Content="Bind to slow property of data source (synchronous)" Click="SlowPropertySync" />
+			<TextBlock Name="tbSlowPropSync" Margin="5"/>
+			<Button Content="Bind to slow property of data source (asynchronous)" Click="SlowPropertyAsync" />
+			<TextBlock Name="tbSlowPropAsync" Margin="5"/>
+		</StackPanel>
+	</Border>
+</Window>
