@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>DELL-LATITUDE</Machine>
+    <WindowsUser>Beatriz</WindowsUser>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <RegisteredManifestChecksum>E7739820434B458DAA48A644C506B91B51AC1258B4C117373BC3EE7B568E61E4</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>6c5737ce-7d5a-47c8-8cf9-52d49a9b0244_1.0.0.0_neutral__mwdye0a0nrncr</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>6c5737ce-7d5a-47c8-8cf9-52d49a9b0244_mwdye0a0nrncr!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>6c5737ce-7d5a-47c8-8cf9-52d49a9b0244</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=Beatriz</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Work\Web Sites\Blog development\BlogPosts\77CaptureWatcher\CaptureWatcherSample\CaptureWatcherSample\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-04-03T05:55:47.963</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Work\Web Sites\Blog development\BlogPosts\77CaptureWatcher\CaptureWatcherSample\CaptureWatcherSample\bin\Debug\CaptureWatcherSample.exe">
+      <PackagePath>CaptureWatcherSample.exe</PackagePath>
+      <Modified>2013-04-04T04:51:54.635</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\Web Sites\Blog development\BlogPosts\77CaptureWatcher\CaptureWatcherSample\CaptureWatcherSample\bin\Debug\CaptureWatcherSample.pdb">
+      <PackagePath>CaptureWatcherSample.pdb</PackagePath>
+      <Modified>2013-04-04T04:51:54.505</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\Web Sites\Blog development\BlogPosts\77CaptureWatcher\CaptureWatcherSample\CaptureWatcherSample\Assets\Logo.png">
+      <PackagePath>Assets\Logo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T04:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\Web Sites\Blog development\BlogPosts\77CaptureWatcher\CaptureWatcherSample\CaptureWatcherSample\Assets\SmallLogo.png">
+      <PackagePath>Assets\SmallLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T04:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\Web Sites\Blog development\BlogPosts\77CaptureWatcher\CaptureWatcherSample\CaptureWatcherSample\Assets\SplashScreen.png">
+      <PackagePath>Assets\SplashScreen.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T04:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\Web Sites\Blog development\BlogPosts\77CaptureWatcher\CaptureWatcherSample\CaptureWatcherSample\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T04:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\Web Sites\Blog development\BlogPosts\77CaptureWatcher\CaptureWatcherSample\CaptureWatcherSample\bin\Debug\App.xaml">
+      <PackagePath>App.xaml</PackagePath>
+      <Modified>2013-04-03T05:11:16.602</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\Web Sites\Blog development\BlogPosts\77CaptureWatcher\CaptureWatcherSample\CaptureWatcherSample\bin\Debug\Common\StandardStyles.xaml">
+      <PackagePath>Common\StandardStyles.xaml</PackagePath>
+      <Modified>2012-06-27T00:19:20.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\Web Sites\Blog development\BlogPosts\77CaptureWatcher\CaptureWatcherSample\CaptureWatcherSample\bin\Debug\MainPage.xaml">
+      <PackagePath>MainPage.xaml</PackagePath>
+      <Modified>2013-04-03T05:20:06.867</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Work\Web Sites\Blog development\BlogPosts\77CaptureWatcher\CaptureWatcherSample\CaptureWatcherSample\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2013-04-03T05:19:24.032</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

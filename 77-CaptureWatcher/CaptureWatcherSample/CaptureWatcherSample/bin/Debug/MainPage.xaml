@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="CaptureWatcherSample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CaptureWatcherSample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="CaptureWatcher sample"
+                   Style="{StaticResource PageHeaderTextStyle}"
+                   Margin="120,0,0,0"/>
+        
+        <Canvas x:ConnectionId='1' x:Name="canvas"
+                Background="White"
+                Grid.Row="1"
+                Margin="120,40,120,80"
+                                                      
+                                                  
+                                                        
+                                                              />
+    </Grid>
+</Page>
+
