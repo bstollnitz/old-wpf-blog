@@ -1,0 +1,114 @@
+﻿<Page
+    x:Class="BooleanConverterSample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="using:ZagStudio.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <Page.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <converters:BooleanToStringConverter x:Key="BooleanToStringConverter" TrueValue="Ready to proceed." FalseValue="Your agreement is required."/>
+        <converters:BooleanToBrushConverter x:Key="BooleanToBrushConverter" TrueValue="Green" FalseValue="Red"/>
+        <converters:BooleanToDoubleConverter x:Key="BooleanToDoubleConverter" TrueValue="1" FalseValue="0.2"/>
+        <converters:NegatedBooleanConverter x:Key="NegatedBooleanConverter"/>
+    </Page.Resources>
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- page title -->
+        <TextBlock Text="Boolean Converters Sample" Style="{StaticResource PageHeaderTextStyle}" Margin="120,0"/>
+        
+        <Grid Grid.Row="1" Margin="120,60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Boolean to visibility -->
+            <Border Background="#333" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="Boolean to Visibility" Style="{StaticResource SubheaderTextStyle}"/>
+                    <CheckBox x:Name="showMoreCheckBox" Content="Show additional options" Margin="0,40,0,0"/>
+                    <StackPanel
+                        Visibility="{Binding ElementName=showMoreCheckBox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Margin="30,10,0,0">
+                        <RadioButton GroupName="Group1" Content="Option 1" IsChecked="True"/>
+                        <RadioButton GroupName="Group1" Content="Option 2" Margin="0,5,0,0"/>
+                        <RadioButton GroupName="Group1" Content="Option 3" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Boolean to string -->
+            <Border Grid.Column="2" Background="#333" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="Boolean to String" Style="{StaticResource SubheaderTextStyle}"/>
+                    <CheckBox x:Name="agreementCheckBox" Content="I agree" Margin="0,40,0,0"/>
+                    <TextBlock
+                    Text="{Binding ElementName=agreementCheckBox, Path=IsChecked, Converter={StaticResource BooleanToStringConverter}}"
+                    Style="{StaticResource BodyTextStyle}"
+                    Margin="0,10,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Boolean to brush -->
+            <Border Grid.Column="4" Background="#333" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="Boolean to Brush" Style="{StaticResource SubheaderTextStyle}"/>
+                    <CheckBox x:Name="correctCheckBox" Content="The result is correct" Margin="0,40,0,0"/>
+                    <Rectangle
+                        Height="50"
+                        Fill="{Binding ElementName=correctCheckBox, Path=IsChecked, Converter={StaticResource BooleanToBrushConverter}}"
+                        Margin="0,10,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Boolean to double -->
+            <Border Grid.Row="2" Background="#333" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="Boolean to Double" Style="{StaticResource SubheaderTextStyle}"/>
+                    <CheckBox x:Name="happinessCheckBox" Content="I am happy" Margin="0,40,0,0" IsChecked="False"/>
+                    <TextBlock
+                        Text="&#xE170;"
+                        Opacity="{Binding ElementName=happinessCheckBox, Path=IsChecked, Converter={StaticResource BooleanToDoubleConverter}}"
+                        FontFamily="Segoe UI Symbol"
+                        FontSize="80"
+                        Margin="0,10,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Negated Boolean -->
+            <Border Grid.Row="2" Grid.Column="2" Background="#333" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="Negated Boolean" Style="{StaticResource SubheaderTextStyle}"/>
+                    <CheckBox x:Name="automaticCheckBox" Content="Choose automatically" Margin="0,40,0,0"/>
+                    <ContentControl
+                        IsTabStop="False"
+                        IsEnabled="{Binding ElementName=automaticCheckBox, Path=IsChecked, Converter={StaticResource NegatedBooleanConverter}}"
+                        Margin="30,10,0,0">
+                        <StackPanel>
+                            <RadioButton GroupName="Group2" Content="Option A" IsChecked="True"/>
+                            <RadioButton GroupName="Group2" Content="Option B" Margin="0,5,0,0"/>
+                            <RadioButton GroupName="Group2" Content="Option C" Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </ContentControl>
+                </StackPanel>
+            </Border>
+
+        </Grid>
+    </Grid>
+</Page>
