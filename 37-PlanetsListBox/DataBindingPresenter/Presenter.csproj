@@ -1,0 +1,101 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
+    <DefaultClrNameSpace>Presenter</DefaultClrNameSpace>
+    <AssemblyName>Presenter</AssemblyName>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <ApplicationVersion>1.0.0.*</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <AlwaysCompileMarkupFilesInSeparateDomain>false</AlwaysCompileMarkupFilesInSeparateDomain>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Presenter</RootNamespace>
+    <ApplicationIcon>Application.ico</ApplicationIcon>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ProjectGuid>{A1ED1BFE-ED19-4224-BDEC-4B964D2BA43C}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets" />
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <ApplicationDefinition Include="App.xaml" />
+    <Compile Include="03SimpleBinding.xaml.cs">
+      <DependentUpon>03SimpleBinding.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="08MasterDetail.xaml.cs">
+      <DependentUpon>08MasterDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="09Views.xaml.cs">
+      <DependentUpon>09Views.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="04PropertyChangeNotifications.xaml.cs">
+      <DependentUpon>04PropertyChangeNotifications.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="11Questions.xaml.cs">
+      <DependentUpon>11Questions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="ConvertKmToM.cs" />
+    <Compile Include="ConvertOrbit.cs" />
+    <Compile Include="01Title.xaml.cs">
+      <DependentUpon>01Title.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="05BindToCollections.xaml.cs">
+      <DependentUpon>05BindToCollections.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="07FancyDataTemplate.xaml.cs">
+      <DependentUpon>07FancyDataTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="06DataTemplateDiagram.xaml.cs">
+      <DependentUpon>06DataTemplateDiagram.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MinMaxValidationRule.cs" />
+    <Compile Include="Presentation.cs" />
+    <Compile Include="Saturn.cs" />
+    <Compile Include="SolarSystem.cs" />
+    <Compile Include="SolarSystemObject.cs" />
+    <Compile Include="02WhatIsDataBinding.xaml.cs">
+      <DependentUpon>02WhatIsDataBinding.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="10TipsDataBinding.xaml.cs">
+      <DependentUpon>10TipsDataBinding.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Page Include="01Title.xaml" />
+    <Page Include="05BindToCollections.xaml" />
+    <Page Include="03SimpleBinding.xaml" />
+    <Page Include="07FancyDataTemplate.xaml" />
+    <Page Include="02WhatIsDataBinding.xaml" />
+    <Page Include="08MasterDetail.xaml" />
+    <Page Include="06DataTemplateDiagram.xaml" />
+    <Page Include="09Views.xaml" />
+    <Page Include="11Questions.xaml" />
+    <Page Include="10TipsDataBinding.xaml" />
+    <Page Include="04PropertyChangeNotifications.xaml" />
+    <Page Include="PooSniffer.xaml" />
+    <Page Include="Window1.xaml" />
+    <Resource Include="Images\2moons_2.gif" />
+    <Resource Include="Images\Bea.jpg" />
+    <Resource Include="Images\earglobe.gif" />
+    <Resource Include="Images\jupglobe.gif" />
+    <Resource Include="Images\Kevin.jpg" />
+    <Resource Include="Images\marglobe.gif" />
+    <Resource Include="Images\merglobe.gif" />
+    <Resource Include="Images\nepglobe.gif" />
+    <Resource Include="Images\planetx.jpg" />
+    <Resource Include="Images\plutoch_2.gif" />
+    <Resource Include="Images\screenShotBlend.png" />
+    <Resource Include="Images\sun.jpg" />
+    <Resource Include="Images\uraglobe.gif" />
+    <Resource Include="Images\venglobe.gif" />
+  </ItemGroup>
+</Project>

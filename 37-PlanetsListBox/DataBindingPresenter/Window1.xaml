@@ -1,0 +1,76 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2006" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	xmlns:Presenter="clr-namespace:Presenter"
+	x:Class="Presenter.Window1"
+	x:Name="Window"
+	Title="Window1"
+	Width="800" Height="600" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="None" KeyDown="Window_KeyDown">
+
+	<Window.Resources>
+		<DataTemplate x:Key="SlideTemplate">
+			<StackPanel>
+				<TextBlock Text="{Binding Mode=OneWay, XPath=@File}"/>
+			</StackPanel>
+		</DataTemplate>
+		<DataTemplate x:Key="SlideTemplate1">
+			<StackPanel>
+				<TextBlock Text="{Binding Mode=OneWay, XPath=@File}"/>
+			</StackPanel>
+		</DataTemplate>
+		<Presenter:Presentation x:Key="presentation"/>
+		<Style x:Key="NextButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Path Fill="#FF565AA0" Stretch="Fill" Stroke="{x:Null}" x:Name="path" Width="63.684" Height="36.709" Data="M577.71929,30.267953 L574,71 C574,71 623.50421,61.738613 623.50421,61.738613 L621.74723,74.696597 647.68857,47.340314 621,20 622,35 C622,35 577.71929,30.267953 577.71929,30.267953 z"/>
+						<ControlTemplate.Triggers>
+							<Trigger Property="MinWidth" Value="0"/>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Fill" TargetName="path" Value="#FFB0B4EE"/>
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True">
+								<Setter Property="Fill" TargetName="path" Value="#FF34365D"/>
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="False">
+								<Setter Property="Fill" TargetName="path" Value="{x:Null}"/>
+								<Setter Property="Stroke" TargetName="path" Value="#FFE1E1E1"/>
+								<Setter Property="StrokeThickness" TargetName="path" Value="1"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Window.Resources>
+
+	<Grid x:Name="LayoutRoot">
+		<Viewbox Margin="10,104,10,40" Stretch="Uniform">
+			<Frame Width="1000" Height="600" Source="{Binding Path=CurrentSlide, Source={StaticResource presentation}}" x:Name="Frame" NavigationUIVisibility="Hidden" Background="{x:Null}" Focusable="False"/>
+		</Viewbox>
+		<TextBlock Margin="10,20,10,0" VerticalAlignment="Top" Height="84" FontFamily="Calibri" FontSize="72" FontWeight="Bold" Text="{Binding Path=Content.Title, ElementName=Frame, Mode=Default}" TextAlignment="Center" TextWrapping="Wrap"/>
+		<Button Style="{DynamicResource NextButtonStyle}" Width="63.684" Height="36.709" Content="Button" Click="Back_Click" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" IsEnabled="{Binding Path=CanGoBack, Source={StaticResource presentation}}">
+			<Button.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform ScaleX="-1" ScaleY="-1"/>
+					<SkewTransform AngleX="0" AngleY="0"/>
+					<RotateTransform Angle="0"/>
+					<TranslateTransform X="0" Y="0"/>
+				</TransformGroup>
+			</Button.RenderTransform>
+		</Button>
+		<Button HorizontalAlignment="Right" Margin="0,0,10,10" Style="{DynamicResource NextButtonStyle}" VerticalAlignment="Bottom" Width="63.684" Height="36.709" Content="Button" Click="Next_Click" IsEnabled="{Binding Path=CanGoNext, Source={StaticResource presentation}}">
+			<Button.Background>
+				<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+					<GradientStop Color="#FFF3F3F3" Offset="0"/>
+					<GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+					<GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+					<GradientStop Color="#FF9BACD8" Offset="1"/>
+				</LinearGradientBrush>
+			</Button.Background>
+		</Button>
+	</Grid>
+</Window>

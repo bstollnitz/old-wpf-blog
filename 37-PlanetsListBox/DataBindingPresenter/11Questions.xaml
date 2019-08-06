@@ -1,0 +1,40 @@
+﻿<Page
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="Presenter.Questions"
+	x:Name="Page"
+	WindowTitle="Page"
+	FlowDirection="LeftToRight"
+	Width="640" Height="480"
+	WindowWidth="640" WindowHeight="480" Title="Resources" xmlns:d="http://schemas.microsoft.com/expression/blend/2006" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+
+	<Page.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="PooSniffer.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Page.Resources>
+
+	<Grid x:Name="LayoutRoot">
+		<TextBlock HorizontalAlignment="Center" Margin="0,0,0,26" VerticalAlignment="Bottom" Height="Auto" FontSize="48" Foreground="#FF72A1AE" Text="Questions?" TextWrapping="Wrap"/>
+		<Grid HorizontalAlignment="Center" Margin="0,0.514,0,134.843">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="90"/>
+				<ColumnDefinition Width="0.768*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+			<Rectangle Fill="#FF000000" Stroke="#FF000000" Margin="0,0,0,0" VerticalAlignment="Center" Width="90" Height="90" Grid.Row="2"/>
+			<TextBlock d:LayoutOverrides="Height" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="Auto" FontSize="24" TextWrapping="Wrap" Grid.Column="1">My blog:<LineBreak/><Hyperlink NavigateUri="http://www.beacosta.com">http://www.beacosta.com</Hyperlink></TextBlock>
+			<TextBlock xml:space="preserve" FontSize="24" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="Auto" Grid.Column="1" Grid.Row="2">Snoop:<LineBreak/><Hyperlink NavigateUri="http://www.blois.us/Snoop/">http://www.blois.us/Snoop/</Hyperlink></TextBlock>
+			<TextBlock xml:space="preserve" FontSize="24" TextWrapping="Wrap" d:LayoutOverrides="Width" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1">Kevin's blog:<LineBreak/><Hyperlink NavigateUri="http://blogs.msdn.com/okoboji/">http://blogs.msdn.com/okoboji/</Hyperlink></TextBlock>
+			<Image HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="90" Height="90" Grid.Row="1" Source="Images\Kevin.jpg" Stretch="Fill"/>
+			<Image HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="90" Height="90" Source="Images\Bea.jpg" Stretch="Fill"/>
+			<Rectangle Fill="{DynamicResource poo_sniffer_xpr}" Stroke="{x:Null}" Margin="0,0,0,0" Grid.Row="2"/>
+		</Grid>
+	</Grid>
+</Page>

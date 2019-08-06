@@ -1,0 +1,59 @@
+﻿<Page
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2006"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  x:Class="Presenter.DataTemplateDiagram"
+	x:Name="Page"
+	WindowTitle="Page"
+	FlowDirection="LeftToRight"
+	Width="1000" Height="600"
+	Title="DataTemplate" Background="#FFFFFFFF">
+
+  <Page.Resources>
+    <ControlTemplate x:Key="buttonTemplate" TargetType="Button">
+      <Grid Background="#FFC0C0C0">
+  	  	<ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+	    </Grid>
+    </ControlTemplate>
+
+    <DataTemplate x:Key="jupiterTemplate">
+      <TextBlock Text="{Binding}" Background="#FFF0E68C" Padding="5" FontWeight="Bold" FontSize="16"/>
+    </DataTemplate>
+  </Page.Resources>
+  
+	<Grid x:Name="LayoutRoot">
+
+    
+		<Grid RenderTransformOrigin="0.5,0.5" Margin="191.5,151.5,181,0" VerticalAlignment="Top" Height="110">
+			<Grid.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+					<SkewTransform AngleX="0" AngleY="0"/>
+					<RotateTransform Angle="0"/>
+					<TranslateTransform X="0" Y="0"/>
+				</TransformGroup>
+			</Grid.RenderTransform>
+			<Border HorizontalAlignment="Left" Width="264" BorderBrush="#FF000000" BorderThickness="1,1,1,1">
+				<TextBlock Width="264" Height="110" Background="#FFD3D1D1" FontSize="16" TextWrapping="Wrap" xml:space="preserve"><Run Foreground="#FF0000FF">&lt;</Run><Span Foreground="#FF800000">ControlTemplate</Span><Run Foreground="#FF0000FF" xml:space="preserve"> &gt;</Run><LineBreak/><Run Foreground="#FF0000FF" xml:space="preserve">    &lt;</Run><Span Foreground="#FF800000">Grid</Span><Span Foreground="#FF0000FF" xml:space="preserve"> </Span><Span Foreground="#FFFF0000">Background</Span><Span Foreground="#FF0000FF">=</Span>"<Run Foreground="#FF0000FF">Silver</Run><Span>"</Span><Span Foreground="#FF0000FF">&gt;</Span><LineBreak/>        <Run Background="#FFFAFBBA" Foreground="#FF0000FF">&lt;</Run><Run Background="#FFFAFBBA" Foreground="#FF800000">ContentPresenter</Run><Run Background="#FFFAFBBA" Foreground="#FF0000FF"> /&gt;</Run><LineBreak/><Run Foreground="#FF0000FF">    &lt;/</Run><Span Foreground="#FF800000">Grid</Span><Span Foreground="#FF0000FF">&gt;</Span><LineBreak/><Run Foreground="#FF0000FF">&lt;/</Run><Span Foreground="#FF800000">ControlTemplate</Span><Span Foreground="#FF0000FF">&gt;</Span><LineBreak/></TextBlock>
+			</Border>
+			<Border HorizontalAlignment="Right" Margin="0,9,0,9" Width="254" BorderBrush="#FF000000" BorderThickness="0,1,1,1">
+				<TextBlock Width="Auto" Height="Auto" Background="#FFFAFBBA" FontSize="16" TextWrapping="Wrap"><Run Foreground="#FF0000FF">&lt;</Run><Span Foreground="#FF800000">DataTemplate</Span><Run Foreground="#FF0000FF">&gt;</Run><LineBreak/><Run Foreground="#FF0000FF" xml:space="preserve">    &lt;</Run><Span Foreground="#FF800000">TextBlock</Span><Span Foreground="#FF0000FF" xml:space="preserve"> </Span><Span Foreground="#FFFF0000">Text</Span><Span Foreground="#FF0000FF">=</Span><Span>"</Span><Span Foreground="#FF0000FF">{Binding}</Span>"<Run Foreground="#FF0000FF"></Run><LineBreak/><Run Foreground="#FF0000FF"></Run><Run Foreground="#FFFF0000" xml:space="preserve">        Background</Run><Span Foreground="#FF0000FF">=</Span>"<Run Foreground="#FF0000FF">Khaki</Run><Span>"</Span><Run Foreground="#FF0000FF" xml:space="preserve"> /&gt;</Run><LineBreak/><Run Foreground="#FF0000FF">&lt;/</Run><Span Foreground="#FF800000">DataTemplate</Span><Span Foreground="#FF0000FF">&gt;</Span><LineBreak/></TextBlock>
+			</Border>
+			<Path Fill="#FFFAFBBA" Stretch="Fill" Stroke="#FF000000" Margin="223,9,253.212,9.001" Data="M470.56402,167.00072 C470.56402,167.00072 460.61076,205.30319 446.81219,205.75086 L417.16968,205.5 418.24368,196 406,213 418.24368,231.5 417.38448,222.5 446.47464,223.75047 C460.48803,224.08564 470.52837,258.00005 470.52837,258.00005"/>
+		</Grid>
+
+    
+    <Button Content="Jupiter" Template="{StaticResource buttonTemplate}" ContentTemplate="{StaticResource jupiterTemplate}" Margin="396,0,404,153" VerticalAlignment="Bottom" Width="200" Height="60" RenderTransformOrigin="0.5,0.5">
+    	<Button.RenderTransform>
+    		<TransformGroup>
+    			<ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+    			<SkewTransform AngleX="0" AngleY="0"/>
+    			<RotateTransform Angle="0"/>
+    			<TranslateTransform X="0" Y="0"/>
+    		</TransformGroup>
+    	</Button.RenderTransform>
+    </Button>
+		<TextBlock Margin="333,0,342,82" VerticalAlignment="Bottom" Height="41" TextWrapping="Wrap" FontSize="24"><Run Foreground="#FF0000FF">&lt;</Run><Run Foreground="#FF800000">Button</Run><Run Foreground="#FF0000FF" xml:space="preserve"> </Run><Run Foreground="#FFFF0000">Content</Run><Run Foreground="#FF0000FF">=</Run>"<Run Foreground="#FF0000FF">Jupiter</Run>"<Run Foreground="#FF0000FF" xml:space="preserve"> /&gt;</Run></TextBlock>
+  </Grid>
+</Page>

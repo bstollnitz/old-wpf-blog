@@ -1,0 +1,82 @@
+﻿<Page
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:local="clr-namespace:Presenter" 
+	x:Class="Presenter.SimpleBinding"
+	x:Name="Page"
+	WindowTitle="Page"
+	FlowDirection="LeftToRight"
+	Width="1000" Height="600"
+  Title="Binding to a single object">
+  
+  <Page.Resources>
+
+    <XmlDataProvider x:Key="xdp" XPath="SolarSystemObject">
+      <x:XData>
+        <SolarSystemObject Name="Sun" xmlns="">
+          <ImageFileName>Images\sun.jpg</ImageFileName>
+          <Diameter>1380000</Diameter>
+          <!-- In Kilometers -->
+        </SolarSystemObject>
+      </x:XData>
+    </XmlDataProvider>
+
+    <local:ConvertKilometersToMiles x:Key="converter"/>
+  </Page.Resources>
+
+  <StackPanel x:Name="LayoutRoot" Width="200">
+    <!-- One-Way, Bind text to static XML -->
+    <TextBlock Text="{Binding Source={StaticResource xdp}, 
+                              XPath=@Name}" 
+               FontSize="30" FontWeight="Bold" 
+               HorizontalAlignment="Center"/>
+
+    <!-- One-Way, Bind Image to static XML -->
+    <!--<Image Source="{Binding Source={StaticResource xdp}, 
+                            XPath=ImageFileName}" 
+           Margin="0,60,0,60"/>-->
+
+    <!-- One-Way, Bind to a WPF element that changes 
+         (comment previous section) -->
+    <Image Source="{Binding Source={StaticResource xdp}, 
+                            XPath=ImageFileName}" 
+           RenderTransformOrigin="0.5, 0.5" Margin="0,60,0,60">
+      <Image.RenderTransform>
+        <RotateTransform Angle="{Binding ElementName=MySlider, 
+                                         Path=Value}" />
+      </Image.RenderTransform>
+    </Image>
+    <Slider Value="0" Minimum="0" Maximum="360" 
+            HorizontalAlignment="Center" Margin="0,0,0,30"
+            Width="150" Focusable="False" Name="MySlider"/>
+
+    <!-- Two-Way, Bind to a WPF element that changes -->
+    <!--<TextBox Text="{Binding ElementName=MySlider, Path=Value, 
+                            Mode=TwoWay, 
+                            UpdateSourceTrigger=PropertyChanged}" />-->
+
+    <!-- Two-Way, Bind to a WPF element that changes, with Validation 
+         (comment previous section) -->
+    <TextBox>
+      <TextBox.Text>
+        <Binding ElementName="MySlider" Path="Value" 
+                 Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+          <Binding.ValidationRules>
+            <local:MinMaxValidationRule Minimum="0" Maximum="360"/>
+          </Binding.ValidationRules>
+        </Binding>
+      </TextBox.Text>  
+    </TextBox>
+    
+    <!-- One-Way, Converter -->
+    <StackPanel Orientation="Horizontal" TextBlock.FontSize="16" 
+                HorizontalAlignment="Center" Margin="0,30,0,30">
+      <TextBlock Text="Diameter: " FontWeight="Bold"/>
+      <TextBlock Text="{Binding Source={StaticResource xdp}, 
+                                XPath=Diameter, 
+                                Converter={StaticResource converter}}" />
+      <TextBlock Text=" miles" />
+    </StackPanel>
+
+  </StackPanel>
+</Page>

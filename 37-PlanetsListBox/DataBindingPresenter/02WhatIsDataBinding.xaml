@@ -1,0 +1,49 @@
+﻿<Page
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:System="clr-namespace:System;assembly=mscorlib"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2006" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="Presenter.WhatIsDataBinding"
+	x:Name="Page"
+	WindowTitle="Page"
+	FlowDirection="LeftToRight"
+	Width="1000" Height="600"
+	Background="#FFFFFFFF" Title="What is Data Binding?">
+
+	<Page.Resources>
+		<Style x:Key="TextBlockStyle1" TargetType="{x:Type TextBlock}">
+			<Setter Property="FontSize" Value="22"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="Foreground" Value="#FF72A1AE"/>
+			<Setter Property="Background" Value="{x:Null}"/>
+		</Style>
+	</Page.Resources>
+
+	<Grid x:Name="LayoutRoot">
+		<TextBlock HorizontalAlignment="Left" Margin="128,0,0,239.5" Style="{DynamicResource TextBlockStyle1}" Width="Auto" Height="Auto" Text="DependencyObject" TextWrapping="Wrap" d:LayoutOverrides="Height" VerticalAlignment="Bottom" FontSize="24" Foreground="#B272A1AE"/>
+		<TextBlock HorizontalAlignment="Right" Margin="0,300.737,99,0" Style="{DynamicResource TextBlockStyle1}" Width="Auto" Height="Auto" Text="XML" TextWrapping="Wrap" RenderTransformOrigin="-0.269,1.52" d:LayoutOverrides="VerticalAlignment, Height" VerticalAlignment="Top" FontSize="36" FontWeight="Normal" Foreground="#CC72A1AE"/>
+		<TextBlock HorizontalAlignment="Right" Margin="0,0,150,194" Style="{DynamicResource TextBlockStyle1}" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Text="Object" TextWrapping="Wrap" RenderTransformOrigin="0.322,1.276" FontSize="30"/>
+		<TextBlock HorizontalAlignment="Right" Margin="0,0,191.717,230.5" Style="{DynamicResource TextBlockStyle1}" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Text="WebService" TextWrapping="Wrap" FontSize="36" Foreground="#4C72A1AE"/>
+		<TextBlock HorizontalAlignment="Right" Margin="0,270.56,58.217,0" Style="{DynamicResource TextBlockStyle1}" Width="Auto" Height="Auto" Text="ADO.NET" TextWrapping="Wrap" d:LayoutOverrides="Height" VerticalAlignment="Top" FontSize="18"/>
+		<TextBlock HorizontalAlignment="Right" Margin="0,196,74.173,0" Style="{DynamicResource TextBlockStyle1}" Width="Auto" Height="Auto" Text="Linq" TextWrapping="Wrap" d:LayoutOverrides="Height" VerticalAlignment="Top" FontSize="36" Foreground="#9972A1AE"/>
+		<TextBlock HorizontalAlignment="Right" Margin="0,0,299,194" Style="{DynamicResource TextBlockStyle1}" VerticalAlignment="Bottom" Width="Auto" Height="Auto" Text="WPF Element" TextWrapping="Wrap" FontSize="20" FontWeight="Normal"/>
+		<Grid HorizontalAlignment="Center" Margin="0,117.38,0,0" VerticalAlignment="Top" Height="177.62">
+			<Grid>
+				<Rectangle Fill="#FF72A1AE" Stroke="#FF000000" RadiusX="12.5" RadiusY="12.5" Width="120" HorizontalAlignment="Left" Margin="0,57.62,0,0"/>
+				<Rectangle Fill="#FF72A1AE" Stroke="#FF000000" RadiusX="12.5" RadiusY="12.5" Width="120" HorizontalAlignment="Right" Margin="0,57.62,0,0"/>
+				<TextBlock Width="Auto" Height="Auto" FontSize="36" Text="Target" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="6.001,0,0,0" VerticalAlignment="Top"/>
+				<TextBlock Width="Auto" Height="Auto" FontSize="36" Text="Source" TextWrapping="Wrap" RenderTransformOrigin="0.558,0.125" HorizontalAlignment="Right" Margin="0,0,1.433,0" VerticalAlignment="Top"/>
+			</Grid>
+			<Rectangle Fill="#FFFCFEFE" Stroke="#FF000000" StrokeThickness="2" RadiusX="12.5" RadiusY="12.5" Height="43" Margin="126,0,124.834,43" VerticalAlignment="Bottom">
+				<Rectangle.StrokeDashArray>
+					<System:Double>5</System:Double>
+				</Rectangle.StrokeDashArray>
+			</Rectangle>
+			<TextBlock Height="Auto" FontSize="24" TextAlignment="Center" TextWrapping="Wrap" d:LayoutOverrides="HorizontalAlignment" Margin="150.092,0,410.092,49" VerticalAlignment="Bottom">Binding</TextBlock>
+			<TextBlock d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Margin="16.5,0,0,43" VerticalAlignment="Bottom" Width="Auto" Height="Auto" FontSize="16" TextAlignment="Right" TextWrapping="Wrap">Dependency<LineBreak/>Property</TextBlock>
+		</Grid>
+		<Rectangle Fill="#FF000000" Stroke="#FF000000" StrokeThickness="2" RadiusX="0" RadiusY="0" HorizontalAlignment="Left" Margin="293.5,224.5,0,0" VerticalAlignment="Top" Width="14" Height="14"/>
+		<Rectangle Fill="#FF000000" Stroke="#FF000000" StrokeThickness="2" RadiusX="0" RadiusY="0" Height="14" HorizontalAlignment="Right" Margin="0,224.5,292.5,0" VerticalAlignment="Top" Width="14"/>
+		<TextBlock Width="Auto" Height="Auto" FontSize="16" TextAlignment="Right" TextWrapping="Wrap" d:LayoutOverrides="Width" HorizontalAlignment="Right" Margin="0,218.553,220.384,0" VerticalAlignment="Top" Text="Property"/>
+	</Grid>
+</Page>
