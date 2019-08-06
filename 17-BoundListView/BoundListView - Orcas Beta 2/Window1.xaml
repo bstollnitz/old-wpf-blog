@@ -1,0 +1,159 @@
+﻿<Window x:Class="BoundListView.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="BoundListView"
+    xmlns:local="clr-namespace:BoundListView" 
+	SizeToContent="WidthAndHeight"
+    >
+	<Window.Resources>
+		<XmlDataProvider XPath="/SolarSystemPlanets/Planet" x:Key="planets">
+			<x:XData>
+			<SolarSystemPlanets xmlns="">
+				<Planet Name="Mercury">
+					<Orbit>57,910,000 km (0.38 AU)</Orbit>
+					<Diameter>4,880 km</Diameter>
+					<Mass>3.30e23 kg</Mass>
+					<Image>merglobe.gif</Image>
+					<Details>The small and rocky planet Mercury is the closest planet to the Sun.</Details>
+				</Planet>
+				<Planet Name="Venus">
+					<Orbit>108,200,000 km (0.72 AU)</Orbit>
+					<Diameter>12,103.6 km</Diameter>
+					<Mass>4.869e24 kg</Mass>
+					<Image>venglobe.gif</Image>
+					<Details>At first glance, if Earth had a twin, it would be Venus.</Details>
+				</Planet>
+				<Planet Name="Earth">
+					<Orbit>149,600,000 km (1.00 AU)</Orbit>
+					<Diameter>12,756.3 km</Diameter>
+					<Mass>5.972e24 kg</Mass>
+					<Image>earglobe.gif</Image>
+					<Details>Earth, our home planet, is the only planet in our solar system known to harbor life.</Details>
+				</Planet>
+				<Planet Name="Mars">
+					<Orbit>227,940,000 km (1.52 AU)</Orbit>
+					<Diameter>6,794 km</Diameter>
+					<Mass>6.4219e23 kg</Mass>
+					<Image>marglobe.gif</Image>
+					<Details>The red planet Mars has inspired wild flights of imagination over the centuries.</Details>
+				</Planet>
+				<Planet Name="Jupiter">
+					<Orbit>778,330,000 km (5.20 AU)</Orbit>
+					<Diameter>142,984 km (equatorial)</Diameter>
+					<Mass>1.900e27 kg</Mass>
+					<Image>jupglobe.gif</Image>
+					<Details>With its numerous moons and several rings, the Jupiter system is a "mini-solar system."</Details>
+				</Planet>
+				<Planet Name="Saturn">
+					<Orbit>1,429,400,000 km (9.54 AU)</Orbit>
+					<Diameter>120,536 km (equatorial)</Diameter>
+					<Mass>5.68e26 kg</Mass>
+					<Image>2moons_2.gif</Image>
+					<Details>Saturn is the most distant of the five planets known to ancient stargazers.</Details>
+				</Planet>
+				<Planet Name="Uranus">
+					<Orbit>2,870,990,000 km (19.218 AU)</Orbit>
+					<Diameter>51,118 km (equatorial)</Diameter>
+					<Mass>8.683e25 kg</Mass>
+					<Image>uraglobe.gif</Image>
+					<Details>Uranus gets its blue-green color from methane gas above the deeper cloud layers.</Details>
+				</Planet>
+				<Planet Name="Neptune">
+					<Orbit>4,504,000,000 km (30.06 AU)</Orbit>
+					<Diameter>49,532 km (equatorial)</Diameter>
+					<Mass>1.0247e26 kg</Mass>
+					<Image>nepglobe.gif</Image>
+					<Details>Neptune was the first planet located through mathematical predictions.</Details>
+				</Planet>
+				<Planet Name="Pluto">
+					<Orbit>5,913,520,000 km (39.5 AU)</Orbit>
+					<Diameter>2274 km</Diameter>
+					<Mass>1.27e22 kg</Mass>
+					<Image>plutoch_2.gif</Image>
+					<Details>Long considered to be the smallest, coldest, and most distant planet from the Sun.</Details>
+				</Planet>
+			</SolarSystemPlanets>
+			</x:XData>
+		</XmlDataProvider>
+
+		<local:StringToImageSourceConverter x:Key="stringToImageSource" />
+
+		<DataTemplate x:Key="ImageTemplate">
+			<Image Source="{Binding XPath=Image, Converter={StaticResource stringToImageSource}}" Margin="3" Width="30" Height="30"/>
+		</DataTemplate>
+
+		<DataTemplate x:Key="NameTemplate">
+			<TextBlock Text="{Binding XPath=@Name}" FontWeight="Bold" VerticalAlignment="Center"/>
+		</DataTemplate>
+
+		<Style TargetType="{x:Type ListViewItem}" x:Key="ListViewItemStyleBase">
+			<Setter Property="BorderThickness" Value="0,0,0,1" />
+			<Setter Property="BorderBrush" Value="LightGray" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ListViewItem}">
+						<Border Background="{TemplateBinding Background}"
+								BorderBrush="{TemplateBinding BorderBrush}"
+								BorderThickness="{TemplateBinding BorderThickness}"
+								Padding="{TemplateBinding Padding}">
+							<StackPanel>
+								<GridViewRowPresenter />
+								<TextBlock Text="{Binding XPath=Details}" Visibility="Collapsed" Name="tb" TextWrapping="Wrap" Margin="2,0,0,4"/>
+							</StackPanel>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsSelected" Value="true">
+								<Trigger.Setters>
+									<Setter Property="Visibility" Value="Visible" TargetName="tb"/>
+								</Trigger.Setters>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<Trigger Property="IsSelected" Value="true">
+					<Trigger.Setters>
+						<Setter Property="Background" Value="Navy" />
+						<Setter Property="Foreground" Value="White" />
+					</Trigger.Setters>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+		<Style TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource ListViewItemStyleBase}" x:Key="ListViewItemStyle1">
+			<Setter Property="Background" Value="White" />
+		</Style>
+
+		<Style TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource ListViewItemStyleBase}" x:Key="ListViewItemStyle2">
+			<Setter Property="Background" Value="AliceBlue" />
+		</Style>
+
+		<local:ListViewItemStyleSelector x:Key="ListViewItemStyleSelector" />
+	</Window.Resources>
+
+	<Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10">
+		<StackPanel>
+			<Button Click="AddItem" HorizontalAlignment="Center" Margin="5">Add planet</Button>
+			<ListView ItemsSource="{Binding Source={StaticResource planets}}" 
+			 ItemContainerStyleSelector="{StaticResource ListViewItemStyleSelector}" Name="lv">
+				<ListView.Resources>
+					<Style TargetType="{x:Type TextBlock}">
+						<Setter Property="VerticalAlignment" Value="Center" />
+					</Style>
+				</ListView.Resources>
+				<ListView.View>
+					<GridView>
+						<GridView.Columns>
+							<GridViewColumn Header="Name" CellTemplate="{StaticResource NameTemplate}" />
+							<GridViewColumn Header="Orbit" DisplayMemberBinding="{Binding XPath=Orbit}" />
+							<GridViewColumn Header="Diameter" DisplayMemberBinding="{Binding XPath=Diameter}" />
+							<GridViewColumn Header="Mass" DisplayMemberBinding="{Binding XPath=Mass}" />
+							<GridViewColumn Header="Image" CellTemplate="{StaticResource ImageTemplate}" />
+						</GridView.Columns>
+					</GridView>
+				</ListView.View>
+			</ListView>
+		</StackPanel>
+	</Border>
+</Window>
