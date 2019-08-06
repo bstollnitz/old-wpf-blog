@@ -10,7 +10,7 @@ I talked about a possible solution that provides partial data virtualization for
 
 WPF has no built-in generic support for data virtualization. 
 
-Fortunately, <a href="http://www.codeproject.com/KB/WPF/WpfDataVirtualization.aspx">Paul McClean</a> and <a href="http://www.zagstudio.com/blogfiles/52/DataVirtualization.pdf">Vincent Van Den Berghe</a> have recently come up with approaches to work around this limitation (the link to Vincent's code in the pdf is incorrect, so I've uploaded his code <a href="http://www.zagstudio.com/blogfiles/52/DataVirtualizationVincent.zip">here</a>). These two solutions haven't been advertised enough, in my opinion! They're both great solutions and easy to adapt to your specific scenario.
+Fortunately, <a href="http://www.codeproject.com/KB/WPF/WpfDataVirtualization.aspx">Paul McClean</a> and <a href="DataVirtualization.pdf">Vincent Van Den Berghe</a> have recently come up with approaches to work around this limitation. These two solutions haven't been advertised enough, in my opinion! They're both great solutions and easy to adapt to your specific scenario.
 
 Paul and Vincent's solutions are very similar to each other - they both implement a layer that is capable of managing data items that are kept in memory. This layer knows when to fetch more data items and when to let old data items be garbage collected, based on the user's scrolling patterns. 
 
