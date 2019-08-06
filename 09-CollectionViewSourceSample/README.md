@@ -24,4 +24,4 @@ The data team made the default synchronization behavior be different for custom 
 
 In the image below, the first and second ListBoxes are bound to the CollectionViewSource and the third and fourth ones have InSynchronizedWithCurrentItem set to true.
 
-![](Images/CollectionViewSourceSample.png)
+![](Images/9CollectionViewSourceSample.png)
