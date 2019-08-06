@@ -1,0 +1,25 @@
+﻿<Window x:Class="MultipleFilters.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:MultipleFilters"
+    Title="MultipleFilters" 
+    SizeToContent="WidthAndHeight"
+	>
+	<Window.Resources>
+		<local:AsterixCharacters x:Key="asterix"/>
+
+		<CollectionViewSource Source="{StaticResource asterix}" x:Key="cvs"/>
+
+		<DataTemplate x:Key="characterTemplate">
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Width="150" Text="{Binding Path=Name}" />
+				<TextBlock Text="{Binding Path=Hair}" />
+			</StackPanel>
+		</DataTemplate>
+	</Window.Resources>
+	<StackPanel Margin="10" Width="200" >
+		<CheckBox Content="Filter out A" Checked="AddAFilter" Unchecked="RemoveAFilter" Margin="5"/>
+		<CheckBox Content="Filter out white hair" Checked="AddWhiteHairFilter" Unchecked="RemoveWhiteHairFilter" Margin="5"/>
+		<ListBox ItemsSource="{Binding Source={StaticResource cvs}}" ItemTemplate="{StaticResource characterTemplate}" Margin="5"/>
+	</StackPanel>
+</Window>
