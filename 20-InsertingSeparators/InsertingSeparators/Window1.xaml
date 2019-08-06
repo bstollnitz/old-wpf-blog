@@ -1,0 +1,35 @@
+﻿<Window x:Class="InsertingSeparators.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="InsertingSeparators" 
+	Height="300" Width="300"
+	xmlns:local="clr-namespace:InsertingSeparators"
+    >
+	<Window.Resources>
+		<local:Source x:Key="src"/>
+
+		<Style TargetType="{x:Type ListBoxItem}" x:Key="separatorStyle">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ListBoxItem}">
+						<Separator HorizontalAlignment="Stretch" IsEnabled="false"/>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<DataTemplate DataType="{x:Type local:Animal}">
+			<TextBlock Text="{Binding Path=Name}" />
+		</DataTemplate>
+		
+		<local:SeparatorStyleSelector x:Key="separatorStyleSelector"/>
+	</Window.Resources>
+
+	<StackPanel>
+		<Menu>
+			<MenuItem Header="Animals" ItemsSource="{Binding Source={StaticResource src}, Path=AnimalCollection}" 
+			   ItemContainerStyleSelector="{StaticResource separatorStyleSelector}"
+		   />
+		</Menu>
+	</StackPanel>
+</Window>

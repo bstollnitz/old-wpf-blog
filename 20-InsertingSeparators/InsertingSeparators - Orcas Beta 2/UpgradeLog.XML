@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="InsertingSeparators">
+</Property><Property Name="Solution File" Value="F:\Blog\20InsertingSeparators\InsertingSeparators\InsertingSeparators.sln">
+</Property><Property Name="Date" Value="Monday, September 17, 2007">
+</Property><Property Name="Time" Value="14:48 PM">
+</Property></Properties><Event ErrorLevel="0" Project="InsertingSeparators" Source="InsertingSeparators.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="InsertingSeparators" Source="InsertingSeparators.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="InsertingSeparators.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="InsertingSeparators.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="InsertingSeparators" Source="InsertingSeparators.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
