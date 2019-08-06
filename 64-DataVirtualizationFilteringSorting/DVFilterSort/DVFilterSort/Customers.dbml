@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Customers" Class="CustomersDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=STOLLNITZ-GREEN\SQLEXPRESS;Initial Catalog=Customers;Integrated Security=True" SettingsObjectName="DVFilterSort.Properties.Settings" SettingsPropertyName="CustomersConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Customer" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="CustomerSince" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AmountPaidLocalCalls" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="AmountPaidNationalCalls" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="AmountPaidInternationalCalls" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="NumberFamilyMembersInPlan" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JoinedPreferredProgram" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Region" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetCount" Method="GetCount">
+    <Parameter Name="BeginDate" Parameter="beginDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="GetCountResult">
+      <Column Name="Count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetSortedFilteredCustomers" Method="GetSortedFilteredCustomers">
+    <Parameter Name="StartIndex" Parameter="startIndex" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EndIndex" Parameter="endIndex" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BeginDate" Parameter="beginDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="OrderBy" Parameter="orderBy" Type="System.String" DbType="VarChar(500)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
