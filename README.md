@@ -1,2 +1,2 @@
 # Old WPF blog
-A selection of posts from my old WPF blog, per user request.
+You can find here a selection of posts from my WPF blog, per user request.

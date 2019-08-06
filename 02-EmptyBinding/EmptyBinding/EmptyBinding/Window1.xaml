@@ -1,0 +1,33 @@
+﻿<?Mapping ClrNamespace="EmptyBinding" XmlNamespace="local"?>
+<?Mapping ClrNamespace="System" XmlNamespace="system" Assembly="mscorlib"?>
+<Window x:Class="EmptyBinding.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+    xmlns:local="local" 
+	xmlns:system="system" 
+    Text="EmptyBinding"
+	SizeToContent="WidthAndHeight"
+    >
+	<Window.Resources>
+		<system:String x:Key="helloString">Hello</system:String>
+		<local:GreekGod Name="Zeus" Description="Supreme God of the Olympians" RomanName="Jupiter" x:Key="zeus"/>
+
+		<DataTemplate x:Key="contentTemplate">
+			<DockPanel>
+				<TextBlock Foreground="RoyalBlue" TextContent="{Binding Path=Name}" />
+				<TextBlock TextContent=":" Margin="0,0,5,0" />
+				<TextBlock Foreground="Silver" TextContent="{Binding Path=Description}" />
+			</DockPanel>
+		</DataTemplate>
+	</Window.Resources>
+
+	<StackPanel>
+		<Border BorderBrush="RoyalBlue" BorderThickness="2" Margin="25,25,25,0" Padding="5" DataContext="{StaticResource helloString}">
+			<TextBlock TextContent="{Binding}"/>
+		</Border>
+		
+		<Border BorderBrush="RoyalBlue" BorderThickness="2" Margin="25" Padding="5" DataContext="{StaticResource zeus}">
+			<ContentControl Content="{Binding}" ContentTemplate="{StaticResource contentTemplate}"/>
+		</Border>
+	</StackPanel>
+</Window>
