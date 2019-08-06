@@ -1,0 +1,23 @@
+﻿<?Mapping ClrNamespace="BindToComboBox" XmlNamespace="local"?>
+<Window x:Class="BindToComboBox.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+	xmlns:local="local" 
+    Title="BindToComboBox"
+	SizeToContent="WidthAndHeight"
+    >
+	<Window.Resources>
+		<local:GreekGods x:Key="greekGods"/>
+
+		<DataTemplate x:Key="itemTemplate">
+			<TextBlock Text="{Binding Path=Name}" />
+		</DataTemplate>
+	</Window.Resources>
+
+	<Border BorderBrush="RoyalBlue" BorderThickness="2" Margin="25" Padding="5">
+		<StackPanel>
+			<Button Click="ButtonClick" Margin="5">Get ComboBoxItem</Button>
+			<ComboBox ItemsSource="{StaticResource greekGods}" ItemTemplate="{StaticResource itemTemplate}" Width="200" Name="comboBox"/>
+		</StackPanel>
+	</Border>
+</Window>
