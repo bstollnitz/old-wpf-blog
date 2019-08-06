@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Mountains>
+  <Mountain Name="Whistler">
+    <Lifts>
+      <Lift Name="Big Red Express">
+        <Runs>
+          <Run>Headwall</Run>
+          <Run>Fisheye</Run>
+          <Run>Jimmy's Joker</Run>
+        </Runs>
+      </Lift>
+      <Lift Name="Garbanzo Express">
+        <Runs>
+          <Run>Raven</Run>
+        </Runs>
+      </Lift>
+      <Lift Name="Orange chair">
+        <Runs>
+          <Run>Orange peel</Run>
+          <Run>Banana peel</Run>
+          <Run>Upper Dave Murray Downhill</Run>
+        </Runs>
+      </Lift>
+    </Lifts>
+  </Mountain>
+  <Mountain Name="Stevens Pass">
+    <Lifts>
+      <Lift Name="Tye Mill">
+        <Runs>
+          <Run>Roller coaster</Run>
+          <Run>Skid road</Run>
+          <Run>Crest trail</Run>
+        </Runs>
+      </Lift>
+      <Lift Name="Jupiter chair">
+        <Runs>
+          <Run>Corona bowl</Run>
+          <Run>Lower gemini</Run>
+        </Runs>
+      </Lift>
+      <Lift Name="Southern cross chair">
+        <Runs>
+          <Run>Orion</Run>
+          <Run>Aquarius face</Run>
+        </Runs>
+      </Lift>
+    </Lifts>
+  </Mountain>
+  <Mountain Name="Crystal Mountain">
+    <Lifts>
+      <Lift Name="Rainier Express">
+        <Runs>
+          <Run>Iceberg ridge</Run>
+          <Run>Pro course</Run>
+          <Run>Lucky shot</Run>
+        </Runs>
+      </Lift>
+      <Lift Name="Green Valley">
+        <Runs>
+          <Run>Green back</Run>
+          <Run>Northway ridge</Run>
+        </Runs>
+      </Lift>
+    </Lifts>
+  </Mountain>
+</Mountains>
+

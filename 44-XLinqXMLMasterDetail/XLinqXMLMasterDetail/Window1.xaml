@@ -1,0 +1,206 @@
+﻿<Window x:Class="XLinqXMLMasterDetail.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:xlinq="clr-namespace:System.Xml.Linq;assembly=System.Xml.Linq"
+    Title="Master-Detail with XLinq and XML" Width="510" Height="600">
+	<Window.Resources>
+		<ObjectDataProvider ObjectType="{x:Type xlinq:XElement}" MethodName="Load" x:Key="PlanetsODP">
+			<ObjectDataProvider.MethodParameters>
+				<system:String>../../SolarSystemPlanets.xml</system:String>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+		
+		<XmlDataProvider XPath="SolarSystemPlanets/Planet" Source="SolarSystemPlanets.xml" x:Key="PlanetsXDP" />
+
+		<DataTemplate x:Key="XLinqMasterPlanetTemplate">
+			<TextBlock Text="{Binding Path=Attribute[Name].Value}" />
+        </DataTemplate>
+
+		<DataTemplate x:Key="XLinqDetailPlanetTemplate">
+			<DataTemplate.Resources>
+				<Style TargetType="TextBlock" x:Key="SmallTitle">
+					<Setter Property="FontWeight" Value="Bold" />
+					<Setter Property="HorizontalAlignment" Value="Right" />
+				</Style>
+			</DataTemplate.Resources>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="20" />
+					<ColumnDefinition Width="200"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+				<TextBlock Text="Orbit:" Style="{StaticResource SmallTitle}" Grid.Column="0" Grid.Row="0"/>
+				<TextBlock Text="{Binding Path=Element[Orbit].Value}" Grid.Column="2" Grid.Row="0"/>
+				<TextBlock Text="Diameter:" Style="{StaticResource SmallTitle}" Grid.Column="0" Grid.Row="1"/>
+				<TextBlock Text="{Binding Path=Element[Diameter].Value}" Grid.Column="2" Grid.Row="1"/>
+				<TextBlock Text="Mass:" Style="{StaticResource SmallTitle}" Grid.Column="0" Grid.Row="2"/>
+				<TextBlock Text="{Binding Path=Element[Mass].Value}" Grid.Column="2" Grid.Row="2"/>
+				<TextBlock Text="Details:" Style="{StaticResource SmallTitle}" Grid.Column="0" Grid.Row="3"/>
+				<TextBlock Text="{Binding Path=Element[Details].Value}" Grid.Column="2" Grid.Row="3" TextWrapping="Wrap"/>
+			</Grid>
+		</DataTemplate>
+
+		<DataTemplate x:Key="XMLMasterPlanetTemplate">
+			<TextBlock Text="{Binding XPath=@Name }" />
+        </DataTemplate>
+
+		<DataTemplate x:Key="XMLDetailPlanetTemplate">
+			<DataTemplate.Resources>
+				<Style TargetType="TextBlock" x:Key="SmallTitle">
+					<Setter Property="FontWeight" Value="Bold" />
+					<Setter Property="HorizontalAlignment" Value="Right" />
+				</Style>
+			</DataTemplate.Resources>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="20" />
+					<ColumnDefinition Width="200"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+				<TextBlock Text="Orbit:" Style="{StaticResource SmallTitle}" Grid.Column="0" Grid.Row="0"/>
+				<TextBlock Text="{Binding XPath=Orbit}" Grid.Column="2" Grid.Row="0"/>
+				<TextBlock Text="Diameter:" Style="{StaticResource SmallTitle}" Grid.Column="0" Grid.Row="1"/>
+				<TextBlock Text="{Binding XPath=Diameter}" Grid.Column="2" Grid.Row="1"/>
+				<TextBlock Text="Mass:" Style="{StaticResource SmallTitle}" Grid.Column="0" Grid.Row="2"/>
+				<TextBlock Text="{Binding XPath=Mass}" Grid.Column="2" Grid.Row="2"/>
+				<TextBlock Text="Details:" Style="{StaticResource SmallTitle}" Grid.Column="0" Grid.Row="3"/>
+				<TextBlock Text="{Binding XPath=Details}" Grid.Column="2" Grid.Row="3" TextWrapping="Wrap"/>
+			</Grid>
+		</DataTemplate>
+
+		<ObjectDataProvider ObjectType="{x:Type xlinq:XElement}" MethodName="Load" x:Key="MountainsODP">
+			<ObjectDataProvider.MethodParameters>
+				<system:String>../../Mountains.xml</system:String>
+			</ObjectDataProvider.MethodParameters>
+		</ObjectDataProvider>
+		
+		<XmlDataProvider x:Key="MountainsXDP" XPath="Mountains/Mountain" Source="Mountains.xml"/>
+
+		<DataTemplate x:Key="XLinqMountainTemplate">
+			<TextBlock Text="{Binding Path=Attribute[Name].Value}" />
+		</DataTemplate>
+
+		<DataTemplate x:Key="XLinqLiftTemplate">
+			<TextBlock Text="{Binding Path=Attribute[Name].Value}" />		
+		</DataTemplate>
+
+		<DataTemplate x:Key="XLinqRunTemplate">
+			<TextBlock Text="{Binding Path=Value}" />		
+		</DataTemplate>
+
+		<DataTemplate x:Key="XMLMountainTemplate">
+			<TextBlock Text="{Binding XPath=@Name}" />
+		</DataTemplate>
+
+		<DataTemplate x:Key="XMLLiftTemplate">
+			<TextBlock Text="{Binding XPath=@Name}" />		
+		</DataTemplate>
+
+		<DataTemplate x:Key="XMLRunTemplate">
+			<TextBlock Text="{Binding XPath=.}" />		
+		</DataTemplate>
+
+		<Style TargetType="TextBlock" x:Key="Title">
+			<Setter Property="FontWeight" Value="Bold" />
+			<Setter Property="FontSize" Value="16" />
+		</Style>
+
+	</Window.Resources>
+
+	<TabControl Name="MainTabControl">
+		<TabItem Header="2 level Master-Detail">
+			<StackPanel>
+				
+				<Grid Margin="30" Name="XML2Level" DataContext="{Binding Source={StaticResource PlanetsXDP}}">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="10"/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="10" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<TextBlock Grid.ColumnSpan="2" Style="{StaticResource Title}" Text="XML" />
+					<ListBox ItemsSource="{Binding}"  Name="MasterListBox2" ItemTemplate="{StaticResource XMLMasterPlanetTemplate}" IsSynchronizedWithCurrentItem="True" Width="100" Grid.Column="0" Grid.Row="2"/>
+					<ContentControl Name="Detail2" Content="{Binding}" ContentTemplate="{StaticResource XMLDetailPlanetTemplate}" Grid.Column="2" Grid.Row="2"/>
+				</Grid>
+
+				<Grid Margin="30" Name="XLinq2Level" DataContext="{Binding Source={StaticResource PlanetsODP}, Path=Elements}">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="10"/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="10" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<TextBlock Grid.ColumnSpan="2" Style="{StaticResource Title}" Text="XLinq" />
+					<ListBox ItemsSource="{Binding}" Name="MasterListBox1" ItemTemplate="{StaticResource XLinqMasterPlanetTemplate}" IsSynchronizedWithCurrentItem="True" Width="100" Grid.Column="0" Grid.Row="2"/>
+					<ContentControl Name="Detail1" Content="{Binding}" ContentTemplate="{StaticResource XLinqDetailPlanetTemplate}" Grid.Column="2" Grid.Row="2"/>
+				</Grid>
+				
+			</StackPanel>
+		</TabItem>
+		<TabItem Header="3 level Master-Detail">
+			<StackPanel>
+
+				<Grid Margin="30" Name="XML3Level" DataContext="{Binding Source={StaticResource MountainsXDP}}">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="10"/>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="10"/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="10" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<TextBlock Grid.ColumnSpan="2" Style="{StaticResource Title}" Text="XML" />
+					<ListBox ItemsSource="{Binding}" Name="MasterListBox4" ItemTemplate="{StaticResource XMLMountainTemplate}" IsSynchronizedWithCurrentItem="True" Width="120" Grid.Column="0" Grid.Row="2"/>
+					<ListBox ItemsSource="{Binding XPath=Lifts/Lift}" ItemTemplate="{StaticResource XMLLiftTemplate}" IsSynchronizedWithCurrentItem="True" Name="MiddleListBox4" Width="120" Grid.Column="2" Grid.Row="2"/>
+					<ListBox Name="Detail4" DataContext="{Binding ElementName=MiddleListBox4, Path=SelectedItem}" ItemsSource="{Binding XPath=Runs/Run}" ItemTemplate="{StaticResource XMLRunTemplate}" IsSynchronizedWithCurrentItem="True" Width="160" Grid.Column="4" Grid.Row="2"/>
+				</Grid>
+
+				<Grid Margin="30" Name="XLinq3Level" DataContext="{Binding Source={StaticResource MountainsODP}, Path=Elements}">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="10"/>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="10"/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="10" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<TextBlock Grid.ColumnSpan="2" Style="{StaticResource Title}" Text="XLinq" />
+					<ListBox ItemsSource="{Binding}" Name="MasterListBox3" ItemTemplate="{StaticResource XLinqMountainTemplate}" IsSynchronizedWithCurrentItem="True" Width="120" Grid.Column="0" Grid.Row="2"/>
+					<ListBox ItemsSource="{Binding Path=Element[Lifts].Elements}" ItemTemplate="{StaticResource XLinqLiftTemplate}" IsSynchronizedWithCurrentItem="True" Name="MiddleListBox3" Width="120" Grid.Column="2" Grid.Row="2"/>
+					<ListBox Name="Detail3" ItemsSource="{Binding ElementName=MiddleListBox3, Path=SelectedItem.Element[Runs].Elements}" ItemTemplate="{StaticResource XLinqRunTemplate}" IsSynchronizedWithCurrentItem="True" Width="160" Grid.Column="4" Grid.Row="2" />
+				</Grid>
+
+			</StackPanel>
+		</TabItem>
+	</TabControl>
+</Window>
