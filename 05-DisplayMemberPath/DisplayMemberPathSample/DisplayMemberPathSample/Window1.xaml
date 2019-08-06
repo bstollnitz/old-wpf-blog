@@ -1,0 +1,18 @@
+﻿<?Mapping ClrNamespace="DisplayMemberPathSample" XmlNamespace="local"?>
+<Window x:Class="DisplayMemberPathSample.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+	xmlns:local="local" 
+    Title="DisplayMemberPathSample"
+	SizeToContent="WidthAndHeight"
+    >
+    <StackPanel>
+		<StackPanel.Resources>
+			<local:GreekGods x:Key="greekGods"/>
+		</StackPanel.Resources>
+
+		<Border BorderBrush="RoyalBlue" BorderThickness="2" Margin="25" Padding="5">
+			<ListBox ItemsSource="{StaticResource greekGods}" DisplayMemberPath="Name"/>
+		</Border>
+    </StackPanel>
+</Window>

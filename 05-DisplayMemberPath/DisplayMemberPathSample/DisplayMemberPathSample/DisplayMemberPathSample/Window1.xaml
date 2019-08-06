@@ -1,0 +1,25 @@
+﻿<?Mapping ClrNamespace="DisplayMemberPathSample" XmlNamespace="local"?>
+<Window x:Class="DisplayMemberPathSample.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+	xmlns:local="local" 
+    Title="DisplayMemberPathSample"
+	SizeToContent="WidthAndHeight"
+    >
+	<Window.Resources>
+		<local:GreekGods x:Key="greekGods"/>
+
+		<DataTemplate x:Key="itemTemplate">
+			<TextBlock Text="{Binding Path=Name}" />
+		</DataTemplate>
+	</Window.Resources>
+
+	<Border BorderBrush="RoyalBlue" BorderThickness="2" Margin="25" Padding="5">
+		<StackPanel Orientation="Horizontal">
+			<ItemsControl ItemsSource="{StaticResource greekGods}" ItemTemplate="{StaticResource itemTemplate}" 
+				Width="150" Name="itemsControl1"/>
+			<ItemsControl ItemsSource="{StaticResource greekGods}" DisplayMemberPath="Name" 
+				Width="150" Name="itemsControl2"/>
+		</StackPanel>
+	</Border>
+</Window>
