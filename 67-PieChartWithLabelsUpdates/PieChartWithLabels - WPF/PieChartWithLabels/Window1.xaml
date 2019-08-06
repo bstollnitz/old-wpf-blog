@@ -1,0 +1,95 @@
+﻿<Window x:Class="PieChartWithLabels.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:customControls="clr-namespace:Controls;assembly=Controls"
+    xmlns:local="clr-namespace:PieChartWithLabels"
+    Title="Pie Chart With Labels" Background="LightGray">
+	<Window.Resources>
+		<Style TargetType="TextBlock" x:Key="detailsSmallTitle">
+			<Setter Property="FontWeight" Value="Bold" />
+			<Setter Property="HorizontalAlignment" Value="Right" />
+			<Setter Property="FontSize" Value="14" />
+		</Style>
+
+		<Style TargetType="TextBlock" x:Key="detailsSmallText">
+			<Setter Property="FontSize" Value="14" />
+		</Style>
+
+		<Style x:Key="darkBorder" TargetType="Border">
+			<Setter Property="BorderBrush" Value="Gray" />
+			<Setter Property="BorderThickness" Value="1" />
+			<Setter Property="Padding" Value="10" />
+			<Setter Property="Margin" Value="0,10,0,10" />
+		</Style>
+
+		<DataTemplate x:Key="cityDetails">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="90"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<TextBlock Text="Name: " Grid.Column="0" Grid.Row="0" Style="{StaticResource detailsSmallTitle}"/>
+				<TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="0" Style="{StaticResource detailsSmallText}"/>
+				<TextBlock Text="Population: " Grid.Column="0" Grid.Row="1" Style="{StaticResource detailsSmallTitle}"/>
+				<TextBlock Text="{Binding Population}" Grid.Column="1" Grid.Row="1" Style="{StaticResource detailsSmallText}"/>
+			</Grid>
+		</DataTemplate>
+
+		<Style TargetType="{x:Type customControls:PieChartLabel}" x:Key="pieChartLabelStyle">
+			<!--<Setter Property="LineStrokeThickness" Value="2"/>
+            <Setter Property="LineStroke" Value="Black"/>-->
+		</Style>
+
+		<DataTemplate DataType="{x:Type local:City}" x:Key="pieChartLabelDataTemplate">
+			<Border BorderThickness="1" BorderBrush="Gray">
+				<StackPanel Background="White" Orientation="Horizontal">
+					<TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type customControls:PieChartLabel}}, Path=FormattedRatio}" VerticalAlignment="Center" Margin="5,0,5,0" />
+					<TextBlock Text="- " />
+					<TextBlock Text="{Binding Name}" Margin="0,0,5,0"/>
+				</StackPanel>
+			</Border>
+		</DataTemplate>
+	</Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+			<Button Content="Add city" Click="AddButton_Click" Margin="5" Padding="10"/>
+			<Button Content="Remove city" Click="RemoveButton_Click" Margin="5" Padding="10"/>
+		</StackPanel>
+
+		<Border Style="{StaticResource darkBorder}" Grid.Row="2" Width="700">
+			<ContentControl  Content="{Binding ElementName=labeledPieSeries, Path=SelectedItem}" ContentTemplate="{StaticResource cityDetails}" HorizontalAlignment="Center"/>
+		</Border>
+
+		<customControls:LabeledPieChart 
+			x:Name="labeledPieChart"
+			Title="Population of Puget Sound Cities"
+			Height="500" Width="700"
+			Grid.Row="3"
+			BorderBrush="Gray"
+			>			
+			<customControls:LabeledPieChart.Series>
+				<customControls:LabeledPieSeries 
+					x:Name="labeledPieSeries"
+					ItemsSource="{Binding}" 
+					IndependentValuePath="Name" 
+					DependentValuePath="Population" 
+					IsSelectionEnabled="True" 
+					PieChartLabelStyle="{StaticResource pieChartLabelStyle}"
+					PieChartLabelItemTemplate="{StaticResource pieChartLabelDataTemplate}"
+					LabelDisplayMode="Auto"
+					/>
+			</customControls:LabeledPieChart.Series>
+		</customControls:LabeledPieChart>
+	</Grid>
+</Window>
