@@ -1,0 +1,194 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2006" 
+	xmlns:WPFPresenter="clr-namespace:WPFPresenter"
+	x:Class="WPFPresenter.Window1"
+	x:Name="Window"
+	Title="Window1"
+	Width="800" Height="600" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="None" 
+	KeyDown="Window_KeyDown" PreviewMouseMove="Window_PreviewMouseMove" PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown">
+
+	<Window.Resources>
+		<WPFPresenter:Presentation x:Key="presentation"/>
+		
+		<Style x:Key="NextButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Path Fill="#FF72A1AE" Stretch="Fill" Stroke="{x:Null}" x:Name="path" Width="63.684" Height="36.709" Data="M577.71929,30.267953 L574,71 C574,71 623.50421,61.738613 623.50421,61.738613 L621.74723,74.696597 647.68857,47.340314 621,20 622,35 C622,35 577.71929,30.267953 577.71929,30.267953 z"/>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Fill" TargetName="path" Value="#4C72A1AE"/>
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True">
+								<Setter Property="Fill" TargetName="path" Value="#FF0C303A"/>
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="False">
+								<Setter Property="Fill" TargetName="path" Value="{x:Null}"/>
+								<Setter Property="Stroke" TargetName="path" Value="#FF72A1AE"/>
+								<Setter Property="StrokeThickness" TargetName="path" Value="1"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Storyboard x:Key="ClickAnimation">
+			<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="clickCanvas" Storyboard.TargetProperty="(UIElement.Visibility)">
+				<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+				<DiscreteObjectKeyFrame KeyTime="00:00:00.7000000">
+						<DiscreteObjectKeyFrame.Value>
+							<Visibility>Collapsed</Visibility>
+						</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="4.749"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="-5.623"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="-0.082"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="4.996"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="5.328"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="-2.748"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.7000000" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle4" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.7000000" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle1" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.7000000" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle2" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.7000000" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle3" Storyboard.TargetProperty="(UIElement.Opacity)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+				<SplineDoubleKeyFrame KeyTime="00:00:00.7000000" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="4.685"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="-3.261"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle4" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="4.463"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="5.573"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="-3.388"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="-5.964"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="5.555"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="2.621"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+				<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="-6.309"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</Window.Resources>
+	<Window.Triggers>
+		<EventTrigger RoutedEvent="UIElement.PreviewMouseLeftButtonDown">
+			<BeginStoryboard Storyboard="{StaticResource ClickAnimation}"/>
+		</EventTrigger>
+	</Window.Triggers>
+
+	<Grid x:Name="LayoutRoot">
+		<Viewbox Margin="10,20,10,40" Stretch="Uniform">
+			<StackPanel>
+				<!-- Title -->
+				<TextBlock VerticalAlignment="Top" Height="84" FontFamily="Calibri" FontSize="65" FontWeight="Bold" Text="{Binding Path=Content.Title, ElementName=Frame, Mode=Default}" TextAlignment="Center" TextWrapping="Wrap"/>
+				<!-- Content of the slide -->
+				<Frame Width="1000" Height="600" Source="{Binding Path=CurrentSlide, Source={StaticResource presentation}}" x:Name="Frame" NavigationUIVisibility="Hidden" Background="{x:Null}" Focusable="False"/>
+			</StackPanel>
+		</Viewbox>
+
+		<!-- Previous Button (Next Button flipped) -->
+		<Button Style="{DynamicResource NextButtonStyle}" Width="63.684" Height="36.709" Content="Button" Click="Back_Click" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" IsEnabled="{Binding Path=CanGoBack, Source={StaticResource presentation}}">
+			<Button.RenderTransform>
+				<ScaleTransform ScaleX="-1" ScaleY="-1"/>
+			</Button.RenderTransform>
+		</Button>
+
+		<!-- Next Button -->
+		<Button HorizontalAlignment="Right" Margin="0,0,10,10" Style="{DynamicResource NextButtonStyle}" VerticalAlignment="Bottom" Width="63.684" Height="36.709" Content="Button" Click="Next_Click" IsEnabled="{Binding Path=CanGoNext, Source={StaticResource presentation}}"/>
+		
+		<Canvas x:Name="clickCanvas" Visibility="Collapsed">
+			<Rectangle RenderTransformOrigin="0.5,0.5" x:Name="rectangle" Width="3" Height="7" Fill="{DynamicResource OrangeClick}" Stroke="#FF000000" StrokeThickness="0" Canvas.Left="-19" Canvas.Top="-3.75">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="1" ScaleY="1"/>
+						<SkewTransform AngleX="0" AngleY="0"/>
+						<RotateTransform Angle="0.836"/>
+						<TranslateTransform X="0" Y="0"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+			</Rectangle>
+			<Rectangle Width="3" Height="7" Fill="{DynamicResource OrangeClick}" Stroke="#FF000000" StrokeThickness="0" RenderTransformOrigin="0.5,0.5" x:Name="rectangle4" Canvas.Left="-10" Canvas.Top="10.125">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="1" ScaleY="1"/>
+						<SkewTransform AngleX="0" AngleY="0"/>
+						<RotateTransform Angle="-53.842"/>
+						<TranslateTransform X="0" Y="0"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+			</Rectangle>
+			<Rectangle Width="3" Height="7" Fill="{DynamicResource OrangeClick}" Stroke="#FF000000" StrokeThickness="0" RenderTransformOrigin="0.5,0.5" x:Name="rectangle1" Canvas.Left="-10" Canvas.Top="-17.375">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="1" ScaleY="1"/>
+						<SkewTransform AngleX="0" AngleY="0"/>
+						<RotateTransform Angle="-119.602"/>
+						<TranslateTransform X="0" Y="0"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+			</Rectangle>
+			<Rectangle Width="3" Height="7" Fill="{DynamicResource OrangeClick}" Stroke="#FF000000" StrokeThickness="0" RenderTransformOrigin="0.5,0.5" x:Name="rectangle2" Canvas.Left="5.625" Canvas.Top="-17.375">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="1" ScaleY="1"/>
+						<SkewTransform AngleX="0" AngleY="0"/>
+						<RotateTransform Angle="-67.444"/>
+						<TranslateTransform X="0" Y="0"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+			</Rectangle>
+			<Rectangle Width="3" Height="7" Fill="{DynamicResource OrangeClick}" Stroke="#FF000000" StrokeThickness="0" RenderTransformOrigin="0.5,0.5" x:Name="rectangle3" Canvas.Left="15.875" Canvas.Top="-4.875">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="1" ScaleY="1"/>
+						<SkewTransform AngleX="0" AngleY="0"/>
+						<RotateTransform Angle="-10.339"/>
+						<TranslateTransform X="0" Y="0"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+			</Rectangle>
+		</Canvas>
+
+	</Grid>
+
+</Window>
