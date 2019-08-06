@@ -29,6 +29,10 @@ This markup assumes that the data context is set to the following ObservableColl
 	};
 	this.DataContext = this.cities;
 
+Here is the result of the XAML and code above:
+
+<img src="Images/LabeledPieChartBasic.png" class="postImage" />
+
 ## Label display modes
 
 The LabeledPieChart control has four ways it can position each label:
@@ -47,9 +51,9 @@ The images below illustrate the label modes (except Auto, which looks like ArcMi
 <th>AutoMixed</th>
 </tr>
 <tr>
-<th><img src="http://www.zagstudio.com/blogfiles/54/LabeledPieChartArcMidpoint2.png" class="postImage" /></th>
-<th><img src="http://www.zagstudio.com/blogfiles/54/LabeledPieChartConnected2.png" class="postImage" /></th>
-<th><img src="http://www.zagstudio.com/blogfiles/54/LabeledPieChartAuto2.png" class="postImage" /></th>
+<th><img src="Images/LabeledPieChartArcMidpoint2.png" class="postImage" /></th>
+<th><img src="Images/LabeledPieChartConnected2.png" class="postImage" /></th>
+<th><img src="Images/LabeledPieChartAuto2.png" class="postImage" /></th>
 </tr>
 </table>
 
@@ -76,6 +80,8 @@ To configure the content of the labels, you can define a DataTemplate that displ
 	<customControls:LabeledPieChart 
 		PieChartLabelItemTemplate="{StaticResource pieChartLabelDataTemplate}"
 		... />
+
+<img src="Images/LabeledPieChartDataTemplate.png" class="postImage" />
 
 The content for PieChartLabel - the custom control that displays a single label - is the actual City data item. Therefore, if you want to display properties of the data item within the label, you can bind to them by just specifying the Path.
 
