@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="Win8SimultaneousEnableDisable.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Win8SimultaneousEnableDisable"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Margin="20">
+                <Button Content="Do work" Command="{Binding DoWorkCommand}"/>
+                <TextBlock Text="{Binding Status}" Margin="20,0,0,0" VerticalAlignment="Center" Style="{StaticResource BasicTextStyle}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Margin="20" Background="#333">
+                <CheckBox Content="Use basic options" IsChecked="{Binding UseBasicOptions, Mode=TwoWay}" Margin="10"/>
+                <ContentControl IsEnabled="{Binding UseBasicOptions}" Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="Choose a basic option:" Style="{StaticResource BasicTextStyle}" Margin="5"/>
+                        <RadioButton Content="Basic option 1" GroupName="BasicOptions" Margin="5" IsChecked="True"/>
+                        <RadioButton Content="Basic option 2" GroupName="BasicOptions" Margin="5"/>
+                        <RadioButton Content="Basic option 3" GroupName="BasicOptions" Margin="5"/>
+                    </StackPanel>
+                </ContentControl>
+                <Button Content="Reset basic options" IsEnabled="{Binding UseBasicOptions}" Margin="10"/>
+                <ComboBox Margin="10" SelectedIndex="0">
+                    <ComboBoxItem Content="Choice A"/>
+                    <ComboBoxItem Content="Choice B"/>
+                    <ComboBoxItem Content="Choice C"/>
+                </ComboBox>
+            </StackPanel>
+
+            <ContentControl Grid.Row="1" Grid.Column="1" Margin="20" IsEnabled="{Binding IsAvailable}">
+                <StackPanel Background="#333">
+                    <CheckBox Content="Use extra options" IsChecked="{Binding UseExtraOptions, Mode=TwoWay}" Margin="10"/>
+                    <ContentControl IsEnabled="{Binding UseExtraOptions}" Margin="10">
+                        <StackPanel>
+                            <TextBlock Text="Choose an extra option:" Style="{StaticResource BasicTextStyle}" Margin="5"/>
+                            <RadioButton Content="Extra option 1" GroupName="ExtraOptions" Margin="5"/>
+                            <RadioButton Content="Extra option 2" GroupName="ExtraOptions" Margin="5" IsChecked="True"/>
+                            <RadioButton Content="Extra option 3" GroupName="ExtraOptions" Margin="5"/>
+                        </StackPanel>
+                    </ContentControl>
+                    <Button Content="Reset extra options" IsEnabled="{Binding UseExtraOptions}" Margin="10"/>
+                    <ComboBox Margin="10" SelectedIndex="1">
+                        <ComboBoxItem Content="Choice A"/>
+                        <ComboBoxItem Content="Choice B"/>
+                        <ComboBoxItem Content="Choice C"/>
+                    </ComboBox>
+                </StackPanel>
+            </ContentControl>
+        </Grid>
+
+    </Grid>
+</Page>
+

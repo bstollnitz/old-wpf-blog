@@ -1,0 +1,56 @@
+﻿<Window x:Class="WpfSimultaneousEnableDisable.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Simultaneous Enable/Disable"
+        SizeToContent="WidthAndHeight">
+   
+    <Grid>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Margin="20">
+                <Button Content="Do work" Command="{Binding DoWorkCommand}" Padding="10,3"/>
+                <TextBlock Text="{Binding Status}" Margin="20,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Margin="20" Background="#EEE">
+                <CheckBox Content="Use basic options" IsChecked="{Binding UseBasicOptions, Mode=TwoWay}" Margin="10"/>
+                <StackPanel Margin="10" IsEnabled="{Binding UseBasicOptions}">
+                    <TextBlock Text="Choose a basic option:" Margin="5"/>
+                    <RadioButton Content="Basic option 1" GroupName="BasicOptions" Margin="5" IsChecked="True"/>
+                    <RadioButton Content="Basic option 2" GroupName="BasicOptions" Margin="5"/>
+                    <RadioButton Content="Basic option 3" GroupName="BasicOptions" Margin="5"/>
+                </StackPanel>
+                <Button Content="Reset basic options" IsEnabled="{Binding UseBasicOptions}" Margin="10"/>
+                <ComboBox Margin="10" SelectedIndex="0">
+                    <ComboBoxItem Content="Choice A"/>
+                    <ComboBoxItem Content="Choice B"/>
+                    <ComboBoxItem Content="Choice C"/>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Margin="20" Background="#EEE" IsEnabled="{Binding IsAvailable}">                
+                <CheckBox Content="Use extra options" IsChecked="{Binding UseExtraOptions, Mode=TwoWay}" Margin="10"/>
+                <StackPanel Margin="10" IsEnabled="{Binding UseExtraOptions}">
+                    <TextBlock Text="Choose an extra option:" Margin="5"/>
+                    <RadioButton Content="Extra option 1" GroupName="ExtraOptions" Margin="5"/>
+                    <RadioButton Content="Extra option 2" GroupName="ExtraOptions" Margin="5" IsChecked="True"/>
+                    <RadioButton Content="Extra option 3" GroupName="ExtraOptions" Margin="5"/>
+                </StackPanel>
+                <Button Content="Reset extra options" IsEnabled="{Binding UseExtraOptions}" Margin="10"/>
+                <ComboBox Margin="10" SelectedIndex="1">
+                    <ComboBoxItem Content="Choice A"/>
+                    <ComboBoxItem Content="Choice B"/>
+                    <ComboBoxItem Content="Choice C"/>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
