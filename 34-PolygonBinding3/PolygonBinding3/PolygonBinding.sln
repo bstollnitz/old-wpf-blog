@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolygonBinding", "PolygonBinding\PolygonBinding.csproj", "{36AF3B23-39FC-438B-82C4-7D5845B54EEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36AF3B23-39FC-438B-82C4-7D5845B54EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36AF3B23-39FC-438B-82C4-7D5845B54EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36AF3B23-39FC-438B-82C4-7D5845B54EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36AF3B23-39FC-438B-82C4-7D5845B54EEF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

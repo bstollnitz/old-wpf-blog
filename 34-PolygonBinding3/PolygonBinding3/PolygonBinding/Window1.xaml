@@ -1,0 +1,15 @@
+﻿<Window x:Class="PolygonBinding.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:PolygonBinding" 
+    Title="PolygonBinding" SizeToContent="WidthAndHeight" 
+    >
+  <Window.Resources>
+    <local:PolygonItem x:Key="src"/>
+    <local:PointCollectionConverter x:Key="converter"/>
+  </Window.Resources>
+  <StackPanel>
+    <Button Click="ChangeSource" Margin="10" HorizontalAlignment="Center">Change data source</Button>
+    <Polygon Name="polygonElement" Width="500" Height="500" Margin="25" Fill="#CD5C5C" Points="{Binding Source={StaticResource src}, Path=Points, Converter={StaticResource converter}}"/>
+  </StackPanel>
+</Window>
