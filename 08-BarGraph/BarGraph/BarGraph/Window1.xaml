@@ -1,0 +1,32 @@
+﻿<?Mapping XmlNamespace="local" ClrNamespace="BarGraph" ?>
+<Window x:Class="BarGraph.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
+    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
+    Title="BarGraph"
+	xmlns:local="local"
+	SizeToContent="WidthAndHeight"
+    >
+	<Window.Resources>
+		<local:DataSource x:Key="source"/>
+
+		<DataTemplate x:Key="template">
+			<StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+				<Rectangle Height="{Binding}" Width="20" Fill="Red" />
+				<Rectangle Width="5" />
+			</StackPanel>
+		</DataTemplate>
+
+	</Window.Resources>
+
+	<Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10">
+		<StackPanel>
+			<ItemsControl ItemsSource="{Binding Source={StaticResource source}, Path=ValueCollection}" 
+				ItemTemplate="{StaticResource template}" Height="130">
+				<ItemsControl.ItemsPanel>
+					<StackPanel Orientation="Horizontal" />
+				</ItemsControl.ItemsPanel>
+			</ItemsControl>
+			<Button Click="ChangeData" Margin="0,5,0,0">Change data</Button>
+		</StackPanel>
+	</Border>
+</Window>
