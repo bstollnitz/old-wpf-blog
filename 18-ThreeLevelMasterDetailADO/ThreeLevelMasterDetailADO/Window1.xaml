@@ -1,0 +1,39 @@
+﻿<Window x:Class="ThreeLevelMasterDetailADO.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="ThreeLevelMasterDetailADO"
+	SizeToContent="WidthAndHeight"
+    >
+	<Window.Resources>
+		<Style TargetType="{x:Type ListBox}">
+			<Setter Property="Height" Value="60"/>
+			<Setter Property="Width" Value="160"/>
+		</Style>
+
+		<Style TargetType="{x:Type Label}">
+			<Setter Property="FontWeight" Value="Bold" />
+		</Style>
+	</Window.Resources>
+	<Border Margin="30" BorderBrush="Blue" BorderThickness="2" Padding="10">
+		<StackPanel Name="sp">
+			<StackPanel Orientation="Horizontal">
+				<StackPanel Margin="5">
+					<Label>Mountains</Label>
+					<ListBox ItemsSource="{Binding}" DisplayMemberPath="Mountain_Name" IsSynchronizedWithCurrentItem="true" Name="lbMountains"/>
+				</StackPanel>
+				<StackPanel Margin="5">
+					<Label>Lifts</Label>
+					<ListBox ItemsSource="{Binding Path=MountainsLifts}" DisplayMemberPath="Lift_Name" IsSynchronizedWithCurrentItem="true" />
+				</StackPanel>
+				<StackPanel Margin="5">
+					<Label>Runs</Label>
+					<ListBox ItemsSource="{Binding Path=MountainsLifts/LiftsRuns}" DisplayMemberPath="Run_Name" IsSynchronizedWithCurrentItem="true" />
+				</StackPanel>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+				<Button Click="AddItem" Name="add">Add mountain</Button>
+				<Button Click="FilterItems">Filter mountains</Button>
+			</StackPanel>
+		</StackPanel>
+	</Border>
+</Window>
