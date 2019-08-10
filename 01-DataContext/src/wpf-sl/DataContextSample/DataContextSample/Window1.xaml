@@ -1,24 +1,31 @@
-﻿<?Mapping ClrNamespace="DataContextSample" XmlNamespace="local"?>
-<Window x:Class="DataContextSample.Window1"
-    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
-    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
-	xmlns:local="local" 
-    Text="DataContextSample"
-	SizeToContent="WidthAndHeight"
-	>
+﻿<Window x:Class="DataContextSample.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:DataContextSample"
+        Title="DataContextSample"
+        SizeToContent="WidthAndHeight">
 
-	<Window.Resources>
-		<local:GreekGod Name="Zeus" Description="Supreme God of the Olympians" RomanName="Jupiter" x:Key="zeus"/>
-		<local:GreekGod Name="Poseidon" Description="God of the sea, earthquakes and horses" RomanName="Neptune" x:Key="poseidon"/>
-	</Window.Resources>
+  <Window.Resources>
+    <local:GreekGod x:Key="zeus"
+                    Name="Zeus"
+                    Description="Supreme God of the Olympians"
+                    RomanName="Jupiter" />
+    <local:GreekGod x:Key="poseidon"
+                    Name="Poseidon"
+                    Description="God of the sea, earthquakes and horses"
+                    RomanName="Neptune" />
+  </Window.Resources>
 
-	<StackPanel>
-		<Border BorderBrush="RoyalBlue" BorderThickness="2" Margin="25" Padding="5">
-			<StackPanel DataContext="{StaticResource poseidon}">
-				<TextBlock TextContent="{Binding Source={StaticResource zeus}, Path=Name}"/>
-				<TextBlock TextContent="{Binding Path=Description}"/>
-				<TextBlock TextContent="{Binding Path=RomanName}"/>
-			</StackPanel>
-		</Border>
-	</StackPanel>
+  <StackPanel>
+    <Border Margin="25"
+            Padding="5"
+            BorderBrush="RoyalBlue"
+            BorderThickness="2">
+      <StackPanel DataContext="{StaticResource poseidon}">
+        <TextBlock Text="{Binding Source={StaticResource zeus}, Path=Name}" />
+        <TextBlock Text="{Binding Path=Description}" />
+        <TextBlock Text="{Binding Path=RomanName}" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
 </Window>

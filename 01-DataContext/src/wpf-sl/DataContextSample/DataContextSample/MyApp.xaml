@@ -1,9 +1,8 @@
 <Application x:Class="DataContextSample.MyApp"
-    xmlns="http://schemas.microsoft.com/winfx/avalon/2005"
-    xmlns:x="http://schemas.microsoft.com/winfx/xaml/2005"
-    StartingUp="AppStartingUp"
-    >
-    <Application.Resources>
-         
-    </Application.Resources>
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             Startup="AppStartingUp">
+  <Application.Resources />
 </Application>
