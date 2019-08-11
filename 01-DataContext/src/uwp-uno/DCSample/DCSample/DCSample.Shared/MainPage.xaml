@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="DCSample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DataContextSample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+  <!--<Page.Resources>
+    <local:GreekGod x:Key="zeus"
+                    Name="Zeus"
+                    Description="Supreme God of the Olympians"
+                    RomanName="Jupiter" />
+    <local:GreekGod x:Key="poseidon"
+                      Name="Poseidon"
+                      Description="God of the sea, earthquakes and horses"
+                      RomanName="Neptune" />
+  </Page.Resources>-->
+
+  <StackPanel>
+    <Border Margin="25"
+            Padding="5"
+            BorderBrush="RoyalBlue"
+            BorderThickness="2">
+      <StackPanel DataContext="{StaticResource poseidon}">
+        <TextBlock Text="{Binding Source={StaticResource zeus}, Path=Name}" />
+        <TextBlock Text="{Binding Path=Description}" />
+        <TextBlock Text="{Binding Path=RomanName}" />
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</Page>
